@@ -1,23 +1,10 @@
 import React from 'react';
-import {withFormik} from 'formik';
+import {withFormik, Form ,  Field, yupToFormErrors} from 'formik';
 import styled from 'styled-components';
 import './signUp.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
-
-const FormHolder = styled.form`
-display:flex;
-flex-direction: column;
-align-items: center;
-width:40%;
-padding:2rem;
-margin: 5rem 1rem;
-border-radius: 10px;
-box-shadow: 5px 5px 5px 5px lightgrey;
-background-color: #00B2EE;
-color: white;
-text-shadow: -1px -1px 0 #003F87, 1px 1px 0 #003F87, 0 -1px 0 #003F87, 0 1px 0 #003F87, 1px -1px 0 #003F87, -1px 1px 0 #003F87, 1px 0 0 #003F87, -1px 0 0 #003F87; 
-`
+import * as Yup from 'yup';
 
 const DivContainer = styled.div`
 display: flex;
@@ -34,46 +21,69 @@ border-radius: 10px;
 font-size: 1.3rem;
 `
  
-function SignUp(){
+function SignUp({values, errors, touched}){
     return(
         <DivContainer>
-            <FormHolder>
+            <Form className="form-holder">
                 <FontAwesomeIcon icon={faCloud} className='cloud-icon2' />
                 <h1>Create Account</h1>
-                <label class='label' htmlFor='username'>
+                <label class='label' htmlFor='name'>
                     <div>Full Name:</div>
-                    <input type='text' name='name' id='name'/>
+                    <Field type='text' name='name' id='name' />
                 </label>
+                { touched.name && errors.name && (<p>{errors.name}</p>)}
                 <label class='label' htmlFor='username'>
                     <div>Username:</div>
-                    <input type='text' name='username' id='username'/>
+                    <Field type='text' name='username' id='username'/>
                 </label>
+                { touched.username && errors.username && (<p>{errors.username}</p>)}
                 <label class='label' htmlFor='password'>
                     <div>Password:</div>
-                    <input type='password' name='password' id='password'/>
+                    <Field type='password' name='password' id='password'/>
                 </label>
+                { touched.password && errors.password && (<p>{errors.password}</p>)}
                 <label className='label' htmlFor='user'>
                     <div>Login Type:</div>
-                    <select className='label2' type='checkbox' name='password' id='password'>
+                    <Field as='select' className='label2' type='checkbox' name='user' id='user'>
                         <option className='options' disabled>Choose one</option>
                         <option value='adminstator'>Adminstrator</option>
                         <option value='volunteer'>Volunteer</option>
                         <option value='student'>Student</option>
-                    </select>
+                    </Field>
                 </label>
+                {/* { touched.user && errors.user && (<p>{errors.user}</p>)} */}
                 <label class='label' htmlFor='email'>
                     <div>Email:</div>
-                    <input type='text' name='email' id='email'/>
+                    <Field type='text' name='email' id='email'/>
                 </label>
+                { touched.email && errors.email && (<p>{errors.email}</p>)}
                 <label class='label' htmlFor='phone'>
                     <div>Phone Number:</div>
-                    <input type='text'name='phone' id='phone'/>
+                    <Field type='text'name='phone' id='phone'/>
                 </label>
+                { touched.phone && errors.phone && (<p>{errors.phone}</p>)}
                 <SignUpButton type='submit'>Register</SignUpButton>
-            </FormHolder>
+            </Form>
         </DivContainer>
     )
 }
 
-
-export default SignUp;
+const SuperSignUp = withFormik({
+    mapPropsToValues({name,username, password, user, email, phone }){
+        return {
+        name: name || '',
+        username: username || '',
+        password: password || '',
+        user: user || '',
+        email: email || '', 
+        phone: phone || ''
+    }},
+    validationSchema: Yup.object().shape({
+        name: Yup.string().required(),
+        username: Yup.string().required(),
+        password: Yup.string().min(7).required(),
+        email: Yup.string().email().required(), 
+        phone: Yup.number().min(10).max(10).required()
+    })
+})(SignUp)
+export default SuperSignUp;
