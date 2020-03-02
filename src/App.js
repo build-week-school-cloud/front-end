@@ -10,13 +10,13 @@ function App() {
   return (
     <div className="App">
       <Navigation/>
-      <Route path='/login'>
+      <Route path='/'>
         <Login/>
       </Route>
       <Route path='/sign-up'>
         <SignUp/>
       </Route>
-      <Route path='/adminstration'>
+      {/* <Route path='/adminstration'>
         <Administration/>
       </Route>
       <Route path='/'>
@@ -24,7 +24,7 @@ function App() {
       </Route>
       <Route path='/sign-up'>
         <SignUp/>
-      </Route>
+      </Route> */}
     </div>
   );
 }

@@ -34,7 +34,7 @@ function Navigation (){
                 <h1>School in the Cloud</h1>
             </ContainerLogo>
             <div>
-                <Link className='links' to='/login'>Login</Link>
+                <Link className='links' to='/'>Login</Link>
             </div>
             <div>
                 <Link className='links' to='/sign-up'>Sign-Up</Link>
