@@ -1,10 +1,12 @@
 import React from 'react';
-import {withFormik} from 'formik';
+import {withFormik, Form ,  Field} from 'formik';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './login.css';
+import * as Yup from 'yup';
+
 
 const FormHolder = styled.form`
 display:flex;
@@ -40,35 +42,51 @@ const Title = styled.h1`
 letter-spacing:.1rem;
 `
 
-function Login(){
+function Login({ touched, errors}){
     return(
         <DivContainer>
-            <FormHolder>
+            <Form class='form-holder'>
                 <FontAwesomeIcon icon={faCloud} className='cloud-icon2' />
                 <Title>Login</Title>
                 <label className='label' htmlFor='username'>
                     <div>Username:</div>
-                    <input type='text' name='username' id='username'/>
+                    <Field type='text' name='username' id='username'/>
                 </label>
+                { touched.username && errors.username && (<p>{errors.username}</p>)}
                 <label className='label' htmlFor='password'>
                     <div>Password:</div>
-                    <input type='password' name='password' id='password'/>
+                    <Field type='password' name='password' id='password'/>
                 </label>
+                { touched.password && errors.password && (<p>{errors.password}</p>)}
                 <label className='label' htmlFor='user'>
                     <div>Login Type:</div>
-                    <select className='label2' type='checkbox' name='password' id='password'>
+                    <Field as='select' className='label2' type='checkbox' name='user' id='user'>
                         <option className='options' disabled>Choose one</option>
                         <option value='adminstator'>Adminstrator</option>
                         <option value='volunteer'>Volunteer</option>
                         <option value='student'>Student</option>
-                    </select>
+                    </Field>
                 </label>
+                { touched.user && errors.user && (<p>{errors.user}</p>)}
                 <SignUpButton type='submit'>Sign In</SignUpButton>
                 <div className='text'>Not a member yet? <Link className='sign-up-link' to='/sign-up'>Sign-Up</Link></div>
-            </FormHolder>
+            </Form>
         </DivContainer>
     )
 }
 
+const SuperLogin = withFormik({
+mapPropsToValues({username, password, user}){
+    return {
+    username: username || '',
+    password: password || '',
+    user: user || ''
+}},
 
-export default Login;
+validationSchema: Yup.object().shape({
+    username: Yup.string().required(),
+    password: Yup.string().required(),
+    user: Yup.string().required()
+})
+})(Login)
+export default SuperLogin;

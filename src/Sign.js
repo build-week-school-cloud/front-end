@@ -1,5 +1,5 @@
 import React from 'react';
-import {withFormik, Form ,  Field, yupToFormErrors} from 'formik';
+import {withFormik, Form ,  Field} from 'formik';
 import styled from 'styled-components';
 import './signUp.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,7 +21,7 @@ border-radius: 10px;
 font-size: 1.3rem;
 `
  
-function SignUp({values, errors, touched}){
+function SignUp({errors, touched}){
     return(
         <DivContainer>
             <Form className="form-holder">
@@ -51,7 +51,6 @@ function SignUp({values, errors, touched}){
                         <option value='student'>Student</option>
                     </Field>
                 </label>
-                {/* { touched.user && errors.user && (<p>{errors.user}</p>)} */}
                 <label class='label' htmlFor='email'>
                     <div>Email:</div>
                     <Field type='text' name='email' id='email'/>
