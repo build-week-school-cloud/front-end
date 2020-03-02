@@ -26,30 +26,29 @@ box-shadow: 3px 3px 3px 3px lightgrey;
 `
 const SignUpButton = styled.button`
 border: #003F87 2px solid;
-width: 50%;
+width: 40%;
 padding: .5rem 1.5rem;
-margin-top:2rem;
+margin:1rem;
 margin-bottom: 1rem;
 color: #003F87;
 border-radius: 10px;
-font-size: 1.3rem;
+font-size: 1rem;
 background-color: #00B2EE;
 `
 
-function TeacherList({teachers}){
+function TeacherEdit({teachers}){
     return(
     <ContainerDiv>
         {teachers.name.map(teacher => (
             <CardDiv key={teacher}>
                 <h2>{teacher}</h2>
                 <div>Subject: Math</div>
-                <div>Times_available: 2pm-6pm mon-fri </div>
-                <div>Location: Philly</div>
-                <SignUpButton>Request Help</SignUpButton>
+                <SignUpButton>Edit List </SignUpButton>
+                <SignUpButton>Create List</SignUpButton>
             </CardDiv>
         ))}
 
     </ContainerDiv>)
 }
 
-export default TeacherList;
+export default TeacherEdit;

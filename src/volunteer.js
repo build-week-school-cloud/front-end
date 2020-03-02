@@ -1,6 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import ToDoList from './ToDoList';
+import styled from 'styled-components';
+
+const Header = styled.h1`
+padding:.3rem;
+text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
+	0 1.5px 0 #003F87, 1.5px -1.5px 0 #003F87, -1.5px 1.5px 0 #003F87, 1.5px 0 0 #003F87,
+    -1.5px 0 0 #003F87; 
+letter-spacing: 1px;
+font-size:3rem;
+color:#00B2EE;
+`
 
 
 function VolunteerView(){
@@ -61,7 +72,7 @@ const movies = [
 
     return(
         <div className='container'>
-            <h1>Welcome Name!</h1>
+            <Header>Welcome Back Name!</Header>
             <ToDoList toDoList={movies} />
         </div>
     )
