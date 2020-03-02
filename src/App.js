@@ -20,13 +20,13 @@ function App() {
       <Route path='/sign-up'>
         <SignUp/>
       </Route>
-      <Route path='/:id/admin'>
+      <Route path='/admin/:id'>
         <Admin/>
       </Route>
-      <Route path='/:id/volunteer'>
+      <Route path='/volunteer/:id'>
         <Volunteer/>
       </Route>
-      <Route path='/:id/student'>
+      <Route path='/student/:id'>
         <Student/>
       </Route>
     </div>
