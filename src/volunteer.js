@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import ToDoList from './ToDoList';
 import styled from 'styled-components';
+import {Link, Route } from 'react-router-dom';
+
 
 const Header = styled.h1`
 padding:.3rem;
@@ -13,10 +15,17 @@ font-size:3rem;
 color:#00B2EE;
 `
 
+const CustomNav = styled.nav`
+display:flex; 
+justify-content: space-evenly;
+`
 
 function VolunteerView(){
+
+	
 const [userinfo, setUserInfo] = useState([]);
 const [toDo, setTodo] = useState([]);
+
 const movies = [
 	{
 		id: 0,
@@ -73,7 +82,13 @@ const movies = [
     return(
         <div className='container'>
             <Header>Welcome Back Name!</Header>
-            <ToDoList toDoList={movies} />
+			<CustomNav>
+				<Link to='/volunteer/:id'>Profile</Link>
+				<Link to='/volunteer/:id/todo-list'>Todo List</Link>
+			</CustomNav>
+			<Route path='/volunteer/:id/todo-list'>
+				<ToDoList toDoList={movies} />	
+			</Route>
         </div>
     )
 }

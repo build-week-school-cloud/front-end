@@ -21,7 +21,7 @@ letter-spacing: 1px;
 font-size:1rem;
 border-radius:10px;
 letter-spacing:.2rem;
-color:skyblue;
+color:#00B2EE;
 box-shadow: 3px 3px 3px 3px lightgrey;
 `
 const SignUpButton = styled.button`

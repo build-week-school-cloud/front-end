@@ -7,7 +7,6 @@ import {Link, Route } from 'react-router-dom';
 const CustomNav = styled.nav`
 display:flex; 
 justify-content: space-evenly;
-
 `
 const Header = styled.h1`
 padding:.3rem;
