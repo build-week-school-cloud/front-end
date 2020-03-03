@@ -36,6 +36,10 @@ color: #003F87;
 border-radius: 10px;
 font-size: 1rem;
 background-color: white;
+&:hover{
+    transform: scale(1.2);
+    transition: .5s;
+}
 `
 const ToDoListH1 = styled.h1`
 width:100%;

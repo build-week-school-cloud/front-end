@@ -46,6 +46,10 @@ margin-bottom: 1rem;
 color: #003F87;
 border-radius: 10px;
 font-size: 1.3rem;
+&:hover{
+    transform: scale(1.2);
+    transition: .5s;
+}
 `
 
 
