@@ -37,6 +37,10 @@ color: #003F87;
 border-radius: 10px;
 font-size: 1.3rem;
 background-color: white;
+&:hover{
+    transform: scale(1.2);
+    transition: .5s;
+}
 `
 
 function TeacherList({teachers}){

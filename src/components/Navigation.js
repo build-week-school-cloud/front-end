@@ -27,27 +27,30 @@ letter-spacing: 1px;
 font-size:1.5rem;
 `
 function Navigation (){
+    // const scaleUp = e => {
+    //     e.target.style.transform = 'scale(1.6)'
+    // }
     return (
         <Container>
             <ContainerLogo>
                 <FontAwesomeIcon icon={faCloud} className='cloud-icon' />
                 <h1>School in the Cloud</h1>
             </ContainerLogo>
-            <div>
-                <Link className='links' to='/'>Login</Link>
-            </div>
-            <div>
-                <Link className='links' to='/sign-up'>Sign-Up</Link>
-            </div>
-            <div>
-                <Link className='links' to='/admin/:id'>Admin</Link>
-            </div>
-            <div>
-                <Link className='links' to='/volunteer/:id'>Volunteer</Link>
-            </div>
-            <div>
-                <Link className='links' to='/student/:id'>Student</Link>
-            </div>
+                <div className='navLinks'>
+                    <Link className='links' to='/'>Login</Link>
+                </div>
+                <div className='navLinks'>
+                    <Link  className='links' to='/sign-up'>Sign-Up</Link>
+                </div>
+                <div className='navLinks'>
+                    <Link className='links' to='/admin/:id'>Admin</Link>
+                </div>
+                <div className='navLinks'>
+                    <Link className='links' to='/volunteer/:id'>Volunteer</Link>
+                </div>
+                <div className='navLinks'>
+                    <Link className='links' to='/student/:id'>Student</Link>
+                </div>
         </Container>
     )
 }
