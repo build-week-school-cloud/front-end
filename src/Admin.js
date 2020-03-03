@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import TeachersEdit from './Admin-teacher-edit';
 import {Link, Route } from 'react-router-dom';
 import AdminProfile from './Admin-profile';
+import Login from './Login';
 
 const CustomNav = styled.nav`
 display:flex; 
@@ -33,7 +34,11 @@ function AdminView(){
             <CustomNav>
                 <Link to='/admin/:id'>Profile</Link>
                 <Link to='/admin/:id/edit-volunteer-list'>Edit Teachers to do List</Link>
+                <Link to='/'>Logout</Link>
             </CustomNav>
+            <Route exact path='/'>
+                <Login/>
+            </Route>
             <Route exact path='/admin/:id'>
                 <AdminProfile/>
             </Route>

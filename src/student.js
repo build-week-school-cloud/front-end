@@ -5,6 +5,7 @@ import TeachersList from './teachers';
 import Form from './FormForSearch';
 import { Link, Route } from 'react-router-dom';
 import StudentProfile from './Student-profile';
+import Login from './Login';
 
 const Header = styled.h1`
 padding:.3rem;
@@ -58,7 +59,11 @@ const [teachers, setTeachers] = useState({name:['jim', 'tim', 'will', 'bill', 'd
             <CustomNav>
                 <Link to='/student/:id'>Profile</Link>
                 <Link to='/student/:id/search-teachers'>Search for Teachers</Link>
+                <Link to='/'>Logout</Link>
             </CustomNav>
+            <Route exact path='/'>
+                <Login/>
+            </Route>
             <Route exact path='/student/:id'>
                 <StudentProfile/>
             </Route>

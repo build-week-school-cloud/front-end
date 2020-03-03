@@ -51,6 +51,11 @@ function SignUp({errors, touched}){
                         <option value='student'>Student</option>
                     </Field>
                 </label>
+                <label class='label' htmlFor='county'>
+                    <div>County:</div>
+                    <Field type='text' name='county' id='county'/>
+                </label>
+                { touched.county && errors.county && (<p>{errors.county}</p>)}
                 <label class='label' htmlFor='email'>
                     <div>Email:</div>
                     <Field type='text' name='email' id='email'/>
@@ -68,12 +73,13 @@ function SignUp({errors, touched}){
 }
 
 const SuperSignUp = withFormik({
-    mapPropsToValues({name,username, password, user, email, phone }){
+    mapPropsToValues({name,username, password, user, email, phone, county }){
         return {
         name: name || '',
         username: username || '',
         password: password || '',
         user: user || '',
+        county: county || '',
         email: email || '', 
         phone: phone || ''
     }},

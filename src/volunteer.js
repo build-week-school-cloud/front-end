@@ -4,6 +4,7 @@ import ToDoList from './ToDoList';
 import styled from 'styled-components';
 import {Link, Route } from 'react-router-dom';
 import VolunteerProfile from './Volunteer-profile';
+import Login from './Login';
 
 
 const Header = styled.h1`
@@ -90,7 +91,11 @@ const movies = [
 			<CustomNav>
 				<Link to='/volunteer/:id'>Profile</Link>
 				<Link to='/volunteer/:id/todo-list'>Todo List</Link>
+				<Link to='/'>Logout</Link>
 			</CustomNav>
+			<Route exact path='/'>
+                <Login/>
+            </Route>
 			<Route exact path='/volunteer/:id'>
 				<VolunteerProfile/>
 			</Route>
