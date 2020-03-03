@@ -1,0 +1,29 @@
+.sign-up-link{
+    color:white;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+.label2{
+        padding:1em;
+        font-size: 1.5rem;
+        width: 100%;
+        margin-top: 1rem;
+        border: #003F87 2px solid;
+        color: #003F87;
+        margin-left: .2rem; 
+    
+}
+
+.form-holder{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:40%;
+    padding:2rem;
+    margin: 5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px lightgrey;
+    background-color: #00B2EE;
+    color: white;
+    text-shadow: -1px -1px 0 #003F87, 1px 1px 0 #003F87, 0 -1px 0 #003F87, 0 1px 0 #003F87, 1px -1px 0 #003F87, -1px 1px 0 #003F87, 1px 0 0 #003F87, -1px 0 0 #003F87; 
+}
