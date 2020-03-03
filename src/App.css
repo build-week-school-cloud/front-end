@@ -55,3 +55,7 @@ form {
  #submit {
    border-radius: 5px;
  }
+.item {
+  line-height: 2;
+  margin-bottom: 30px;;
+}
