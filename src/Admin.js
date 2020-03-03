@@ -2,8 +2,13 @@ import React, {useState, useEffect}from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
 import TeachersEdit from './Admin-teacher-edit';
+import {Link, Route } from 'react-router-dom';
 
+const CustomNav = styled.nav`
+display:flex; 
+justify-content: space-evenly;
 
+`
 const Header = styled.h1`
 padding:.3rem;
 text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
@@ -19,7 +24,14 @@ function AdminView(){
     return(
         <div>
             <Header>Welcome back Name!</Header>
+            <CustomNav>
+                <Link to='/admin/:id'>Profile</Link>
+                <Link to='/admin/:id/edit-volunteer-list'>Edit Teachers to do List</Link>
+            </CustomNav>
+            <Route path='/admin/:id/edit-volunteer-list'>
             <TeachersEdit teachers={teachers}/>
+            </Route>
+            
         </div>
     )
 }
