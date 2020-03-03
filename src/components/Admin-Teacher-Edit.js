@@ -37,10 +37,21 @@ border-radius: 10px;
 font-size: 1rem;
 background-color: white;
 `
+const ToDoListH1 = styled.h1`
+width:100%;
+margin: 1rem;
+text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
+0 1.5px 0 #003F87, 1.5px -1.5px 0 #003F87, -1.5px 1.5px 0 #003F87, 1.5px 0 0 #003F87,
+-1.5px 0 0 #003F87; 
+letter-spacing: 1px;
+font-size:2rem;
+color:#00B2EE;
+`
 
 function TeacherEdit({teachers}){
     return(
     <ContainerDiv>
+        <ToDoListH1>Teachers Todo List</ToDoListH1>
         {teachers.name.map(teacher => (
             <CardDiv key={teacher}>
                 <h2>{teacher}</h2>
