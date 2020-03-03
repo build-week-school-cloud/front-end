@@ -29,15 +29,16 @@ text-shadow: -1px -1px 0 #003F87, 1px 1px 0 #003F87, 0 -1px 0 #003F87,
 0 1px 0 #003F87, 1px -1px 0 #003F87, -1px 1px 0 #003F87, 1px 0 0 #003F87,
 -1px 0 0 #003F87; 
 letter-spacing: 1px;
-font-size:1rem;
+font-size:1.3rem;
 border-radius:10px;
 letter-spacing:.2rem;
-color:#00B2EE;
-box-shadow: 3px 3px 3px 3px lightgrey;
+color:white;
+box-shadow: 5px 5px 5px 5px lightgrey;
+background-color: #00B2EE;
 `
 const MarkButton = styled.button`
 border: none;
-box-shadow: 3px 3px 3px 3px lightgrey;
+border: #003F87 1px solid;
 width: 50%;
 padding: .5rem 1.5rem;
 margin-top:2rem;

@@ -17,7 +17,7 @@ color:#00B2EE;
 `
 const Card= styled.div`
 Margin: 2rem;
-box-shadow: 3px 3px 3px 3px lightgrey;
+box-shadow: 5px 5px 5px 5px lightgrey;
 width: 40%;
 padding:1rem;
 border-radius: 10px;
@@ -26,7 +26,8 @@ text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
 -1.5px 0 0 #003F87; 
 letter-spacing: 2px;
 font-size:1.3rem;
-color:#00B2EE;
+color:white;
+background-color:#00B2EE;
 `
 
 function AdminProfile(props){

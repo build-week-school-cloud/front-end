@@ -11,6 +11,7 @@ const CardDiv = styled.div `
 padding: 1rem;
 width:25%;
 margin: 1rem;
+margin-top:2rem;
 line-height: 2.5rem;
 const Header = styled.h1
 padding:.3rem;
@@ -21,8 +22,9 @@ letter-spacing: 1px;
 font-size:1rem;
 border-radius:10px;
 letter-spacing:.2rem;
-color:skyblue;
-box-shadow: 3px 3px 3px 3px lightgrey;
+color:white;
+box-shadow: 5px 5px 5px 5px lightgrey;
+background-color: #00B2EE;
 `
 const SignUpButton = styled.button`
 border: #003F87 2px solid;
@@ -33,7 +35,7 @@ margin-bottom: 1rem;
 color: #003F87;
 border-radius: 10px;
 font-size: 1rem;
-background-color: #00B2EE;
+background-color: white;
 `
 
 function TeacherEdit({teachers}){
