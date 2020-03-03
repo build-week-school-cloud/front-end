@@ -51,6 +51,56 @@ const SignUp = (props) => {
                         <option value="China">Canada</option>
                     </select>
                 </div>
+                
+                <div style={countyStyle}>
+                <br />
+                    <label htmlFor="subject">select subject(s)</label>
+                    <select id="subject" onChange={handleChange}>
+                        <option value="math">Math</option>
+                        <option value="english">English</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="piano">Piano</option>
+                        <option value="java">Java</option>
+                        <option value="js">JS</option>
+                        <option value="css">CSS</option>
+                        <option value="react">React</option>
+
+                    </select>
+                </div>
+                
+                <div style={countyStyle}>
+                    <br />
+                    <label htmlFor="start_time">Avaliable start at</label>
+                    <select id="start_time" onChange={handleChange}>
+                        <option value="8:00am">8:00am</option>
+                        <option value="9:00am">9:00am</option>
+                        <option value="10:00am">10:00am</option>
+                        <option value="11:am">11:00am</option>
+                        <option value="3:00pm">3:00pm</option>
+                        <option value="4:00pm">4:00pm</option>
+                        <option value="5:00pm">5:00pm</option>
+                        <option value="6:00pm">6:00pm</option>
+                        <option value="7:00pm">7:00pm</option>
+                    </select>
+                    <br />
+                </div>
+
+                <div>
+                    <br />
+                    <label htmlFor="end_time">Avaliable end at</label>
+                    <select id="end_time" onChange={handleChange}>
+                        <option value="9:00am">9:00am</option>
+                        <option value="10:00am">10:00am</option>
+                        <option value="11:00am">11:00am</option>
+                        <option value="12:00pm">12:00pm</option>
+                        <option value="3:00pm">3:00pm</option>
+                        <option value="4:00pm">4:00pm</option>
+                        <option value="5:00pm">5:00pm</option>
+                        <option value="6:00pm">6:00pm</option>
+                        <option value="7:00pm">7:00pm</option>
+                        <option value="8:00pm">8:00pm</option>
+                    </select>
+                </div>
                 <br />
                 <div className="email">
                     <label htmlFor="email">Email</label>
