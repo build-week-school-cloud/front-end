@@ -21,7 +21,7 @@ function App() {
         <Link to="/administrator">Administrator</Link>
         <Link to="/volunteers">Volunteers</Link>
         <Link to="/students">Students</Link>
-        <Link to="/logIn">Login</Link>
+        <Link to="/logIn">Log In</Link>
         <Link to="/signUp">Sign up</Link>
       </nav>
         <Route exact path="/" component={Home} />
