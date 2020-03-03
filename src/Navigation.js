@@ -9,7 +9,7 @@ const Container = styled.div`
 display: flex;
 justify-content: space-evenly;
 align-items: center;
-background-color: #00B2EE;
+background-color:#00B2EE;
 margin:1rem;
 border-radius: 10px;
 color:white;

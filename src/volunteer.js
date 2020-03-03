@@ -3,26 +3,31 @@ import axios from 'axios';
 import ToDoList from './ToDoList';
 import styled from 'styled-components';
 import {Link, Route } from 'react-router-dom';
+import VolunteerProfile from './Volunteer-profile';
 
 
 const Header = styled.h1`
 padding:.3rem;
 text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
-	0 1.5px 0 #003F87, 1.5px -1.5px 0 #003F87, -1.5px 1.5px 0 #003F87, 1.5px 0 0 #003F87,
-    -1.5px 0 0 #003F87; 
+0 1.5px 0 #003F87, 1.5px -1.5px 0 #003F87, -1.5px 1.5px 0 #003F87, 1.5px 0 0 #003F87, -1.5px 0 0 #003F87; 
 letter-spacing: 1px;
-font-size:3rem;
+font-size:2.5rem;
 color:#00B2EE;
 `
-
 const CustomNav = styled.nav`
 display:flex; 
-justify-content: space-evenly;
+justify-content: space-around;
+width: 100%;
+`
+
+const CustomizeContainer = styled.div`
+display:flex; 
+flex-direction: column;
+align-items: center;
 `
 
 function VolunteerView(){
 
-	
 const [userinfo, setUserInfo] = useState([]);
 const [toDo, setTodo] = useState([]);
 
@@ -80,16 +85,19 @@ const movies = [
     // })
 
     return(
-        <div className='container'>
+        <CustomizeContainer className='container'>
             <Header>Welcome Back Name!</Header>
 			<CustomNav>
 				<Link to='/volunteer/:id'>Profile</Link>
 				<Link to='/volunteer/:id/todo-list'>Todo List</Link>
 			</CustomNav>
+			<Route exact path='/volunteer/:id'>
+				<VolunteerProfile/>
+			</Route>
 			<Route path='/volunteer/:id/todo-list'>
 				<ToDoList toDoList={movies} />	
 			</Route>
-        </div>
+        </CustomizeContainer>
     )
 }
 

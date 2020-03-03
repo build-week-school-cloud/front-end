@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const Header = styled.h1`
 padding:.3rem;
 text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
-	0 1.5px 0 #003F87, 1.5px -1.5px 0 #003F87, -1.5px 1.5px 0 #003F87, 1.5px 0 0 #003F87,
-    -1.5px 0 0 #003F87; 
+0 1.5px 0 #003F87, 1.5px -1.5px 0 #003F87, -1.5px 1.5px 0 #003F87, 1.5px 0 0 #003F87,
+-1.5px 0 0 #003F87; 
 letter-spacing: 1px;
 font-size:2rem;
 color:#00B2EE;
@@ -26,8 +26,8 @@ line-height: 2.5rem;
 const Header = styled.h1
 padding:.3rem;
 text-shadow: -1px -1px 0 #003F87, 1px 1px 0 #003F87, 0 -1px 0 #003F87,
-	0 1px 0 #003F87, 1px -1px 0 #003F87, -1px 1px 0 #003F87, 1px 0 0 #003F87,
-    -1px 0 0 #003F87; 
+0 1px 0 #003F87, 1px -1px 0 #003F87, -1px 1px 0 #003F87, 1px 0 0 #003F87,
+-1px 0 0 #003F87; 
 letter-spacing: 1px;
 font-size:1rem;
 border-radius:10px;
@@ -38,7 +38,7 @@ box-shadow: 3px 3px 3px 3px lightgrey;
 
 
 function ToDoList (props){
-    console.log(props.toDoList)
+    
     return (
         <ContainerDiv>
             <Header>To Do List:</Header>

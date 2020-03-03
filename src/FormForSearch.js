@@ -14,17 +14,18 @@ const SearchInput = styled.input`
 width:50%;
 margin:1rem;
 `
-
-
+const SearchForm = styled.form`
+Width:100%
+`
 
 function Form(){
     return (
-        <form>
+        <SearchForm>
             <Labeled htmlFor='search'>
                 <SearchInput className='search' type='text' name='search' id='search' />
                 Search
             </Labeled>
-        </form>
+        </SearchForm>
     )
 }
 

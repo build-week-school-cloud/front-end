@@ -20,7 +20,7 @@ function App() {
       <Route path='/sign-up'>
         <SignUp/>
       </Route>
-      <Route path='/admin/:id'>
+      <Route  path='/admin/:id'>
         <Admin/>
       </Route>
       <Route path='/volunteer/:id'>
