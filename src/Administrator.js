@@ -4,6 +4,7 @@ const Administrator = () => {
 return (
     <div className="administrator">
         <h1>Administrator</h1>
+        
     </div>
 )
 

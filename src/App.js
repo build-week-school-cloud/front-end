@@ -13,7 +13,7 @@ import SignUp from './SignUp';
 function App() {
   return (
     <div className="App">
-    <h1> hello world</h1>
+    <h1> School in the Cloud</h1>
     {/* <Header></Header> */}
     <Router>
       <nav>
