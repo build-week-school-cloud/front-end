@@ -35,6 +35,17 @@ letter-spacing:.2rem;
 color:#00B2EE;
 box-shadow: 3px 3px 3px 3px lightgrey;
 `
+const MarkButton = styled.button`
+border: none;
+box-shadow: 3px 3px 3px 3px lightgrey;
+width: 50%;
+padding: .5rem 1.5rem;
+margin-top:2rem;
+margin-bottom: 1rem;
+color: #003F87;
+border-radius: 10px;
+font-size: 1.3rem;
+`
 
 
 function ToDoList (props){
@@ -46,6 +57,7 @@ function ToDoList (props){
                 <CardDiv key={todo.id}>
                     <h2>{todo.title} <span>Due_date:{todo.due_date}</span></h2>
                     <div>{todo.description}</div>
+                    <MarkButton type='submit'>Marked as Complete</MarkButton>
                 </CardDiv>
             ))}
         </ContainerDiv>

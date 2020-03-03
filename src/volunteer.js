@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import {Link, Route } from 'react-router-dom';
 import VolunteerProfile from './Volunteer-profile';
 import Login from './Login';
+import './links.css'
+
 
 
 const Header = styled.h1`
@@ -89,9 +91,9 @@ const movies = [
         <CustomizeContainer className='container'>
             <Header>Welcome Back Name!</Header>
 			<CustomNav>
-				<Link to='/volunteer/:id'>Profile</Link>
-				<Link to='/volunteer/:id/todo-list'>Todo List</Link>
-				<Link to='/'>Logout</Link>
+				<Link className='links nestedlink' to='/volunteer/:id'>Profile</Link>
+				<Link className='links nestedlink' to='/volunteer/:id/todo-list'>Todo List</Link>
+				<Link className='links nestedlink' to='/'>Logout</Link>
 			</CustomNav>
 			<Route exact path='/'>
                 <Login/>

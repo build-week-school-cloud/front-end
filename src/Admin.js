@@ -5,7 +5,7 @@ import TeachersEdit from './Admin-teacher-edit';
 import {Link, Route } from 'react-router-dom';
 import AdminProfile from './Admin-profile';
 import Login from './Login';
-
+import './links.css'
 const CustomNav = styled.nav`
 display:flex; 
 justify-content: space-around;
@@ -32,9 +32,9 @@ function AdminView(){
         <CustomizeContainer>
             <Header>Welcome Back Name!</Header>
             <CustomNav>
-                <Link to='/admin/:id'>Profile</Link>
-                <Link to='/admin/:id/edit-volunteer-list'>Edit Teachers to do List</Link>
-                <Link to='/'>Logout</Link>
+                <Link className='links nestedlink' to='/admin/:id'>Profile</Link>
+                <Link className='links nestedlink' to='/admin/:id/edit-volunteer-list'>Edit Teachers to do List</Link>
+                <Link className='links nestedlink' to='/'>Logout</Link>
             </CustomNav>
             <Route exact path='/'>
                 <Login/>
