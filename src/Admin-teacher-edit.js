@@ -26,8 +26,8 @@ box-shadow: 3px 3px 3px 3px lightgrey;
 `
 const SignUpButton = styled.button`
 border: #003F87 2px solid;
-width: 40%;
-padding: .5rem 1.5rem;
+width: 20%;
+padding: .5rem .5rem;
 margin:1rem;
 margin-bottom: 1rem;
 color: #003F87;
@@ -43,8 +43,10 @@ function TeacherEdit({teachers}){
             <CardDiv key={teacher}>
                 <h2>{teacher}</h2>
                 <div>Subject: Math</div>
-                <SignUpButton>Edit List </SignUpButton>
-                <SignUpButton>Create List</SignUpButton>
+                <SignUpButton>Edit</SignUpButton>
+                <SignUpButton>Create</SignUpButton>
+                <SignUpButton>Delete</SignUpButton>
+
             </CardDiv>
         ))}
 
