@@ -33,6 +33,7 @@ background-color:#00B2EE;
 function StudentProfile(props){
     return (
         <Card>
+            <h2>Student</h2>
             <h2>Full Name here</h2>
             <ProfileImg src={ProfilePhoto}/>
             <CardItems>Username here</CardItems>
