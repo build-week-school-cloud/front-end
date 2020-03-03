@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import ToDoList from './ToDoList';
+import ToDoList from './TodoList';
 import styled from 'styled-components';
 import {Link, Route } from 'react-router-dom';
-import VolunteerProfile from './Volunteer-profile';
+import VolunteerProfile from './Volunteer-Profile';
 import Login from './Login';
-import './links.css'
+import './Links.css'
 
 
 

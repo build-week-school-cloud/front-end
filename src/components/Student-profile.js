@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilePhoto from './student.jpg';
+import ProfilePhoto from './Student.jpg';
 import styled from 'styled-components';
 
 const ProfileImg = styled.img`

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import TeachersList from './teachers';
+import TeachersList from './Teacher';
 import Form from './Form-Search';
 import { Link, Route } from 'react-router-dom';
 import StudentProfile from './Student-profile';
 import Login from './Login';
-import './links.css'
+import './Links.css'
 
 const Header = styled.h1`
 padding:.3rem;

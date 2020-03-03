@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import './login.css';
+import './Login.css';
 import * as Yup from 'yup';
 
 

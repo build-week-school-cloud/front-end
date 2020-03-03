@@ -1,11 +1,12 @@
 import React, {useState, useEffect}from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
-import TeachersEdit from './Admin-teacher-edit';
+import TeachersEdit from './Admin-Teacher-Edit';
 import {Link, Route } from 'react-router-dom';
-import AdminProfile from './Admin-profile';
+import AdminProfile from './Admin-Profile';
 import Login from './Login';
-import './links.css'
+import './Links.css';
+
 const CustomNav = styled.nav`
 display:flex; 
 justify-content: space-around;

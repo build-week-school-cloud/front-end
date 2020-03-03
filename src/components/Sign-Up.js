@@ -1,7 +1,7 @@
 import React from 'react';
 import {withFormik, Form ,  Field} from 'formik';
 import styled from 'styled-components';
-import './signUp.css';
+import './SignUp.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import * as Yup from 'yup';
@@ -87,6 +87,7 @@ const SuperSignUp = withFormik({
         name: Yup.string().required(),
         username: Yup.string().required(),
         password: Yup.string().min(7).required(),
+        location: Yup.string().required(),
         email: Yup.string().email().required(), 
         phone: Yup.number().min(10).max(10).required()
     })
