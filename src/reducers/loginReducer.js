@@ -29,7 +29,7 @@ export const loginReducer = (state = initialState, action) => {
             return {
                 ...state,
                 logging: false,
-                // error: action.payload
+                error: action.payload
             }            
         default:
             return state;

@@ -1,4 +1,5 @@
 import axiosWithAuth from '../utils/axiosWithAuth';
+import axios from 'axios';
 
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
@@ -18,8 +19,10 @@ export const SET_ERROR = "SET_ERROR";
 
 export const login = user => dispatch => {
     dispatch({type: LOGIN_START})
-    axiosWithAuth()
-        .post(`/auth/login`, user)
+    axios
+        .post(`https://cloudschoolbw.herokuapp.com/api/auth/login`, {
+            username: 'tyler', password: 'password', role: 'student'
+        })
         .then(res => {
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             console.log('login response', res);
@@ -37,6 +40,7 @@ export const register = user => dispatch => {
         .then(res => {
             dispatch({type: REGISTER_SUCCESS, payload: res.data})
             console.log('register response', res)
+            window.localStorage.setItem('token', res.data.password)
         })
         .catch(err => {
             dispatch({type: REGISTER_FAILURE, payload: err})
