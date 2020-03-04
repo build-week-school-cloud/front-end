@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import './Login.css';
 import * as Yup from 'yup';
 
-
 const FormHolder = styled.form`
 display:flex;
 flex-direction: column;
@@ -38,6 +37,7 @@ border-radius: 10px;
 font-size: 1.3rem;
 margin-left: .5rem;
 `
+
 const Title = styled.h1`
 letter-spacing:.1rem;
 `
@@ -82,7 +82,6 @@ mapPropsToValues({username, password, user}){
     password: password || '',
     user: user || ''
 }},
-
 validationSchema: Yup.object().shape({
     username: Yup.string().required(),
     password: Yup.string().required(),

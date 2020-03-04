@@ -30,29 +30,24 @@ flex-direction: column;
 align-items: center;
 `
 
-
 function StudentView(){
     
-const [teachers, setTeachers] = useState({name:['jim', 'tim', 'will', 'bill', 'dylan', 'steph', 'mike', 'ben', 'howard', 'stern', 'jacob', 'alex', 'mark', 'dev']});
-// const [displayed , setDisplayed] = useState([]);
-// const [input, setInput] = useState('');
-    // useEffect(()=>{
-    //     axios.get('url').then(res => {
-    //         const teacher = res.filter( teacher => {
-    //             teacher.name.toLowerCase().includes(Search.toLowerCase())
-    //         })
-    //                 setUserInfo(res);
-    //                 // setToDo(res);
-    //             }).catch(err => console.log(err))
+const [teachers, setTeachers] = useState([]);
+const [displayed, setDisplayed ] = useState([])
+const [input, setInput] = useState('');
 
-    // })
-//    const inputChange = e => {
-//         setInput(e.target.value);
+    useEffect(()=>{
+        axios.get('https://swapi.co/api/people/').then(res => {
+            setTeachers(res.data.results); 
+            setDisplayed(res.data.results);
+    }).catch(err => console.log(err))
 
-//         const search = teachers.name.filter( teacher => teacher.toLowerCase().includes(input.toLowerCase()))
-
-//         setDisplayed(search)
-//     }
+    },[])
+   const inputChange = e => {
+        setInput(e.target.value)
+        const filtered = teachers.filter( teacher => (teacher.name.toLowerCase().includes(input.toLowerCase())))
+        setDisplayed(filtered)
+    }
 
     return(
         <CustomizeContainer>
@@ -69,8 +64,8 @@ const [teachers, setTeachers] = useState({name:['jim', 'tim', 'will', 'bill', 'd
                 <StudentProfile/>
             </Route>
             <Route path='/student/:id/search-teachers'>
-                <Form/>
-                <TeachersList teachers={teachers} />
+                <Form inputChange={inputChange}/>
+                <TeachersList teachers={displayed} />
             </Route>
         </CustomizeContainer>
     )

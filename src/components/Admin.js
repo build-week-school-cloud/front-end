@@ -12,6 +12,7 @@ display:flex;
 justify-content: space-around;
 width: 100%;
 `
+
 const Header = styled.h1`
 padding:.3rem;
 text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
@@ -21,6 +22,7 @@ letter-spacing: 1px;
 font-size:2.5rem;
 color:#00B2EE;
 `
+
 const CustomizeContainer = styled.div`
 display:flex; 
 flex-direction: column;
@@ -28,7 +30,13 @@ align-items: center;
 `
 
 function AdminView(){
-    const [teachers, setTeachers] = useState({name:['jim', 'tim', 'will', 'bill', 'dylan', 'steph', 'mike', 'ben', 'howard', 'stern', 'jacob', 'alex', 'mark', 'dev']});
+
+    const [toDo, setToDo] = useState([]);
+
+useEffect(()=>{
+	axios.get('https://swapi.co/api/people/').then( res => setToDo(res.data.results)).catch( err => console.log(err))
+})
+    
     return(
         <CustomizeContainer>
             <Header>Welcome Back Name!</Header>
@@ -44,7 +52,7 @@ function AdminView(){
                 <AdminProfile/>
             </Route>
             <Route path='/admin/:id/edit-volunteer-list'>
-                <TeachersEdit teachers={teachers}/>
+                <TeachersEdit toDo={toDo}/>
             </Route>    
         </CustomizeContainer>
     )

@@ -15,21 +15,20 @@ border-radius: 10px;
 color:white;
 border: #003F87 solid 1px;
 `
+
 const ContainerLogo = styled.div`
 display: flex;
 justify-content: flex-start;
 align-items: center;
 padding:.3rem;
 text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
-	0 1.5px 0 #003F87, 1.5px -1.5px 0 #003F87, -1.5px 1.5px 0 #003F87, 1.5px 0 0 #003F87,
-    -1.5px 0 0 #003F87; 
+0 1.5px 0 #003F87, 1.5px -1.5px 0 #003F87, -1.5px 1.5px 0 #003F87, 1.5px 0 0 #003F87,
+-1.5px 0 0 #003F87; 
 letter-spacing: 1px;
 font-size:1.5rem;
 `
+
 function Navigation (){
-    // const scaleUp = e => {
-    //     e.target.style.transform = 'scale(1.6)'
-    // }
     return (
         <Container>
             <ContainerLogo>

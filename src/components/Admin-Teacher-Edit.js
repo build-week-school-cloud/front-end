@@ -9,15 +9,15 @@ align-items:space-evenly;
 `
 const CardDiv = styled.div `
 padding: 1rem;
-width:25%;
+width:80%;
 margin: 1rem;
 margin-top:2rem;
 line-height: 2.5rem;
 const Header = styled.h1
 padding:.3rem;
 text-shadow: -1px -1px 0 #003F87, 1px 1px 0 #003F87, 0 -1px 0 #003F87,
-	0 1px 0 #003F87, 1px -1px 0 #003F87, -1px 1px 0 #003F87, 1px 0 0 #003F87,
-    -1px 0 0 #003F87; 
+0 1px 0 #003F87, 1px -1px 0 #003F87, -1px 1px 0 #003F87, 1px 0 0 #003F87,
+-1px 0 0 #003F87; 
 letter-spacing: 1px;
 font-size:1rem;
 border-radius:10px;
@@ -27,23 +27,27 @@ box-shadow: 5px 5px 5px 5px lightgrey;
 background-color: #00B2EE;
 `
 const SignUpButton = styled.button`
-border: #003F87 2px solid;
-width: 20%;
-padding: .5rem .5rem;
-margin:1rem;
+box-shadow: 5px 5px 5px 5px lightgrey;
+width: 15%;
+padding: 1rem 2rem;
+margin:3rem 3rem;
 margin-bottom: 1rem;
-color: #003F87;
+color: white;
 border-radius: 10px;
 font-size: 1rem;
-background-color: white;
+background-color:#00B2EE ;
+text-shadow: -1px -1px 0 #003F87, 1px 1px 0 #003F87, 0 -1px 0 #003F87,
+0 1px 0 #003F87, 1px -1px 0 #003F87, -1px 1px 0 #003F87, 1px 0 0 #003F87,
+-1px 0 0 #003F87; 
+font-size:1.5rem;
 &:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: .5s;
 }
 `
 const ToDoListH1 = styled.h1`
 width:100%;
-margin: 1rem;
+margin: 2rem;
 text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
 0 1.5px 0 #003F87, 1.5px -1.5px 0 #003F87, -1.5px 1.5px 0 #003F87, 1.5px 0 0 #003F87,
 -1.5px 0 0 #003F87; 
@@ -52,22 +56,24 @@ font-size:2rem;
 color:#00B2EE;
 `
 
-function TeacherEdit({teachers}){
+function TeacherEdit({toDo}){
     return(
     <ContainerDiv>
         <ToDoListH1>Teachers Todo List</ToDoListH1>
-        {teachers.name.map(teacher => (
-            <CardDiv key={teacher}>
-                <h2>{teacher}</h2>
-                <div>Subject: Math</div>
-                <SignUpButton>Edit</SignUpButton>
-                <SignUpButton>Create</SignUpButton>
-                <SignUpButton>Delete</SignUpButton>
-
-            </CardDiv>
-        ))}
+        <SignUpButton>Edit</SignUpButton>
+        <SignUpButton>Create</SignUpButton>
+        <SignUpButton>Delete</SignUpButton>
+        {toDo.map(todo => (
+                <CardDiv key={todo.heigh}>
+                    <h2>whats needs to be done: {todo.name}</h2>
+                    <div>description of what to do{todo.name}</div>
+                    <div>Due_date:{todo.mass}</div>
+                </CardDiv>
+            ))}
 
     </ContainerDiv>)
 }
 
 export default TeacherEdit;
+
+

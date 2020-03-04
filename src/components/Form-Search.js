@@ -10,19 +10,21 @@ letter-spacing: 1px;
 font-size:2rem;
 color:#00B2EE;
 `
+
 const SearchInput = styled.input`
 width:50%;
 margin:1rem;
 `
+
 const SearchForm = styled.form`
 Width:100%
 `
 
-function Form(){
+function Form({inputChange}){
     return (
         <SearchForm>
             <Labeled htmlFor='search'>
-                <SearchInput className='search' type='text' name='search' id='search' />
+                <SearchInput onChange={inputChange} className='search' type='text' name='search' id='search' />
                 Search
             </Labeled>
         </SearchForm>
