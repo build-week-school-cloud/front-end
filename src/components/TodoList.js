@@ -11,6 +11,7 @@ font-size:2rem;
 color:#00B2EE;
 width:100%;
 `
+
 const ContainerDiv = styled.div`
 display: flex;
 justify-content: space-evenly;
@@ -36,6 +37,7 @@ color:white;
 box-shadow: 5px 5px 5px 5px lightgrey;
 background-color: #00B2EE;
 `
+
 const MarkButton = styled.button`
 border: none;
 border: #003F87 1px solid;
@@ -52,16 +54,15 @@ font-size: 1.3rem;
 }
 `
 
-
-function ToDoList (props){
+function ToDoList ({toDo}){
     
     return (
         <ContainerDiv>
             <Header>To Do List:</Header>
-            {props.toDoList.map(todo => (
-                <CardDiv key={todo.id}>
-                    <h2>{todo.title} <span>Due_date:{todo.due_date}</span></h2>
-                    <div>{todo.description}</div>
+            {toDo.map(todo => (
+                <CardDiv key={todo.heigh}>
+                    <h2>{todo.name} <span>Due_date:{todo.mass}</span></h2>
+                    <div>{todo.name}</div>
                     <MarkButton type='submit'>Marked as Complete</MarkButton>
                 </CardDiv>
             ))}

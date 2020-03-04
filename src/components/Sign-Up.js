@@ -10,6 +10,7 @@ const DivContainer = styled.div`
 display: flex;
 justify-content: center;
 `
+
 const SignUpButton = styled.button`
 border: #003F87 2px solid;
 width: 50%;

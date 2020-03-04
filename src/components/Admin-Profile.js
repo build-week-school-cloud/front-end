@@ -7,14 +7,17 @@ border-radius: 1rem;
 border: #003F87 1px solid;
 margin: 1rem;
 `
+
 const CardItems = styled.div`
 padding: 1rem;
 `
+
 const CardItem2 = styled.div`
 padding: 1rem;
 text-shadow:none;
 color:#00B2EE;
 `
+
 const Card= styled.div`
 Margin: 2rem;
 box-shadow: 5px 5px 5px 5px lightgrey;
