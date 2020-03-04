@@ -7,8 +7,7 @@ import SignUp from './components/Sign-Up';
 import Admin from './components/Admin';
 import Volunteer from './components/Volunteer';
 import Student from './components/Student';
-
-
+import Test from './components/Test';
 
 function App() {
   return (
@@ -29,6 +28,7 @@ function App() {
       <Route path='/student/:id'>
         <Student/>
       </Route>
+      <Test/>
     </div>
   );
 }
