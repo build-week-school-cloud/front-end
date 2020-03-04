@@ -1,22 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function VolunteerProfile(props) {
+// export default function VolunteerProfile(props) {
+    export default function VolunteerProfile(props) {
 
   const VolunteerProfileStyle= styled.div `
     background: #efefef;
     border: 1px solid #bfbfbf;
     padding: 20px;
     margin: 10px;
-    height: 200px;
+    height: 250px;
     width: 100px;
     border-radius: 10px;
   `
   return (
     
     <VolunteerProfileStyle>
-    <div className="displayCard">    
-    
+    <div className="displayCard">  
+
+      {/* <p>{name}</p>
+      <p>{subject}</p>
+      <p>{country}</p>
+      <p>{timeAvaliable}</p> 
+     */}
       <p>{props.name}</p>
       <p>{props.subject}</p>
       <p>{props.country}</p>

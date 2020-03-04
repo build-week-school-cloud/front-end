@@ -53,7 +53,7 @@
   color: white;
   font-family: 'Arvo', serif;
   font-size: 25px;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   text-decoration: none;
 }
 
@@ -81,7 +81,7 @@ form {
 }
 .signUp, .logIn, .student, .volunteer, .administrator {
   color: rgb(41, 37, 37);
-  font-size: 20px;
+  font-size: 25px;
 }
 .displayCard {
   display: flex;
