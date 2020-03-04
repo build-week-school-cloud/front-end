@@ -8,7 +8,7 @@ function Test(props) {
         e.preventDefault();
         // props.login(user);
         axios
-            .post('https://cloudschoolbw.herokuapp.com/api/auth/register', {username: 'tyler', password: 'password'})
+            .post('https://cloudschoolbw.herokuapp.com/api/auth/register', user)
             .then(res => {
                 console.log(res);
             })
