@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background-image: url(./background.jpg);
+  background-size: cover;
+  height: 100%;
+  
 }
 
 .App-logo {
@@ -37,6 +41,22 @@
   }
 }
 
+.title {
+  color: white;
+  font-size: 50px;
+  font-weight: 800;
+  /* font-family: 'Lobster', cursive; */
+  font-family: 'Pacifico', cursive;
+  padding: 3rem;
+}
+.link {
+  color: white;
+  font-family: 'Arvo', serif;
+  font-size: 25px;
+  margin-bottom: 4rem;
+  text-decoration: none;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -58,4 +78,7 @@ form {
 .item {
   line-height: 2;
   margin-bottom: 30px;;
+}
+.signUp, .logIn, .student, .volunteer {
+  font-size: 20px;
 }

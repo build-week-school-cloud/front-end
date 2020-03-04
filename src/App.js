@@ -13,16 +13,16 @@ import SignUp from './SignUp';
 function App() {
   return (
     <div className="App">
-    <h1> School in the Cloud</h1>
+    <div className="title"> School in the Cloud</div>
     {/* <Header></Header> */}
     <Router>
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/administrator">Administrator</Link>
-        <Link to="/volunteers">Volunteers</Link>
-        <Link to="/students">Students</Link>
-        <Link to="/logIn">Log In</Link>
-        <Link to="/signUp">Sign up</Link>
+        <Link className="link" to="/">Home</Link>
+        <Link className="link" to="/administrator">Administrator</Link>
+        <Link className="link" to="/volunteers">Volunteers</Link>
+        <Link className="link" to="/students">Students</Link>
+        <Link className="link" to="/logIn">Log In</Link>
+        <Link className="link" to="/signUp">Sign up</Link>
       </nav>
         <Route exact path="/" component={Home} />
         <Route path="/administrator" component={Administrator} />

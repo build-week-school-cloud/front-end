@@ -14,7 +14,7 @@ const SignUp = (props) => {
         });
     }
 
-    const countyStyle = memberInfo.status === "volunteer" ? { display: "block"} : { display: "none"};
+    const countryStyle = memberInfo.status === "volunteer" ? { display: "block"} : { display: "none"};
 
     return (
         <div className="signUp">
@@ -41,7 +41,7 @@ const SignUp = (props) => {
                     <option value="student">Student</option>
                 </select>
                 </div>
-                    <div style={countyStyle}>
+                    <div style={countryStyle}>
                     <br />
                     <label htmlFor="country">Country</label>
                     <select id="country" onChange={handleChange}>
@@ -52,7 +52,7 @@ const SignUp = (props) => {
                     </select>
                 </div>
                 
-                <div style={countyStyle}>
+                <div style={countryStyle}>
                 <br />
                     <label htmlFor="subject">select subject(s)</label>
                     <select id="subject" onChange={handleChange}>
@@ -68,7 +68,7 @@ const SignUp = (props) => {
                     </select>
                 </div>
                 
-                <div style={countyStyle}>
+                <div style={countryStyle}>
                     <br />
                     <label htmlFor="start_time">Avaliable start at</label>
                     <select id="start_time" onChange={handleChange}>
@@ -85,7 +85,7 @@ const SignUp = (props) => {
                     <br />
                 </div>
 
-                <div>
+                <div style={countryStyle}>
                     <br />
                     <label htmlFor="end_time">Avaliable end at</label>
                     <select id="end_time" onChange={handleChange}>
