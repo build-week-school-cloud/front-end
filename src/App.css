@@ -83,3 +83,16 @@ form {
   color: rgb(41, 37, 37);
   font-size: 20px;
 }
+.displayCard {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.8;
+ 
+  
+}
+.displayCards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}

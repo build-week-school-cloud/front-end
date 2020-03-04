@@ -20,13 +20,13 @@ const SignUp = (props) => {
             errors.firstName = "You need a first name";
         }
         if (!lastName) {
-            errors.lastName = "You need a first name";
+            errors.lastName = "You need a last name";
         }
         if (!email) {
-            errors.email = "You need a first name";
+            errors.email = "You need an email address";
         }
         if (!password) {
-            errors.password = "You need a first name";
+            errors.password = "You need a password";
         }
     }
 
