@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import {withFormik, Form ,  Field} from 'formik';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,6 +7,8 @@ import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import * as Yup from 'yup';
+import { connect } from 'react-redux';
+import { login } from '../actions';
 
 const FormHolder = styled.form`
 display:flex;
@@ -42,25 +45,36 @@ const Title = styled.h1`
 letter-spacing:.1rem;
 `
 
-function Login({ touched, errors}){
+function Login({ touched, errors, ...props}){
+    const [user, setUser] = useState({
+        username: '',
+        password: ''
+    })
+    const handleChanges = e => {
+        setUser({...user, [e.target.name]: e.target.value})
+    }
+    const handleSubmit = e => {
+        e.preventDefault();
+        props.login(user)
+    }
     return(
         <DivContainer>
-            <Form class='form-holder'>
+            <Form onSubmit={handleSubmit} className='form-holder'>
                 <FontAwesomeIcon icon={faCloud} className='cloud-icon2' />
                 <Title>Login</Title>
                 <label className='label' htmlFor='username'>
                     <div>Username:</div>
-                    <Field type='text' name='username' id='username'/>
+                    <Field type='text' value={user.username} onChange={handleChanges} name='username' id='username'/>
                 </label>
                 { touched.username && errors.username && (<p>{errors.username}</p>)}
                 <label className='label' htmlFor='password'>
                     <div>Password:</div>
-                    <Field type='password' name='password' id='password'/>
+                    <Field type='password' value={user.password} onChange={handleChanges} name='password' id='password'/>
                 </label>
                 { touched.password && errors.password && (<p>{errors.password}</p>)}
                 <label className='label' htmlFor='user'>
                     <div>Login Type:</div>
-                    <Field as='select' className='label2' type='checkbox' name='user' id='user'>
+                    <Field as='select' value={user.password} onChange={handleChanges} className='label2' type='checkbox' name='user' id='user'>
                         <option className='options' disabled>Choose one</option>
                         <option value='adminstator'>Adminstrator</option>
                         <option value='volunteer'>Volunteer</option>
@@ -88,4 +102,14 @@ validationSchema: Yup.object().shape({
     user: Yup.string().required()
 })
 })(Login)
-export default SuperLogin;
+
+const mapStateToProps = state => {
+    return {
+        login: state.login
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    { login }
+)(SuperLogin);
