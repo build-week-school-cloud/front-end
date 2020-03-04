@@ -13,6 +13,22 @@ const SignUp = (props) => {
             [event.target.id]: event.target.value
         });
     }
+    const validate = ({firstName, lastName, email, password}) => {
+        const errors = {};
+        //validating firstName
+        if (!firstName) {
+            errors.firstName = "You need a first name";
+        }
+        if (!lastName) {
+            errors.lastName = "You need a first name";
+        }
+        if (!email) {
+            errors.email = "You need a first name";
+        }
+        if (!password) {
+            errors.password = "You need a first name";
+        }
+    }
 
     const countryStyle = memberInfo.status === "volunteer" ? { display: "block"} : { display: "none"};
 
