@@ -19,13 +19,13 @@ export const SET_ERROR = "SET_ERROR";
 
 export const login = user => dispatch => {
     dispatch({type: LOGIN_START})
-    axios
-        .post(`https://cloudschoolbw.herokuapp.com/api/auth/login`, {
-            username: 'tyler', password: 'password', role: 'student'
-        })
+    console.log('User:', user)
+    axiosWithAuth()
+        .post(`https://cloudschoolbw.herokuapp.com/api/auth/login`, {user})
         .then(res => {
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             console.log('login response', res);
+            window.localStorage.setItem('token', res.data.token)
         })
         .catch(err => {
             console.log('login error', err)

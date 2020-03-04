@@ -25,7 +25,7 @@ function Test(props) {
 
 const mapStateToProps = state => {
     return {
-        login: false
+        login: state.login
     }
 }
 
