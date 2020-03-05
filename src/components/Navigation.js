@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import './Navigation.css'
+import { connect } from 'react-redux';
 
 const Container = styled.div`
 display: flex;
@@ -28,31 +29,54 @@ letter-spacing: 1px;
 font-size:1.5rem;
 `
 
-function Navigation (){
-    return (
-        <Container>
-            <ContainerLogo>
-                <FontAwesomeIcon icon={faCloud} className='cloud-icon' />
-                <h1>School in the Cloud</h1>
-            </ContainerLogo>
-                <div className='navLinks'>
-                    <Link className='links' to='/'>Login</Link>
-                </div>
-                <div className='navLinks'>
-                    <Link  className='links' to='/sign-up'>Sign-Up</Link>
-                </div>
-                <div className='navLinks'>
-                    <Link className='links' to='/admin'>Admin</Link>
-                </div>
-                <div className='navLinks'>
-                    <Link className='links' to='/volunteer'>Volunteer</Link>
-                </div>
-                <div className='navLinks'>
-                    <Link className='links' to='/student'>Student</Link>
-                </div>
-        </Container>
-    )
+class Navigation extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            
+        }
+    }
+
+    handleClick = e => {
+        e.preventDefault();
+        console.log(this.props.userType)        
+    }
+    render(){
+        return (
+            <Container>
+                <ContainerLogo>
+                    <FontAwesomeIcon icon={faCloud} className='cloud-icon' />
+                    <h1>School in the Cloud</h1>
+                </ContainerLogo>
+                    <div className='navLinks'>
+                        <Link className='links' to='/'>Login</Link>
+                    </div>
+                    <div className='navLinks'>
+                        <Link  className='links' to='/sign-up'>Sign-Up</Link>
+                    </div>
+                    {this.props.userType ? 'true' : 'false'}
+                    <div className='navLinks'>
+                        <Link className='links' to='/admin'>Admin</Link>
+                    </div>
+                    <div className='navLinks'>
+                        <Link className='links' to='/volunteer'>Volunteer</Link>
+                    </div>
+                    <div className='navLinks'>
+                        <Link className='links' to='/student'>Student</Link>
+                    </div>
+                    <button onClick={this.handleClick}>Click me</button>
+            </Container>
+        )
+    }    
 }
 
+const mapStateToProps = state => {
+    return {
+        userType: state.userType
+    }
+}
 
-export default Navigation;
+export default connect(
+    mapStateToProps,
+    {}
+)(Navigation);

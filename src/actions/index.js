@@ -92,3 +92,7 @@ export const fetchVolunteer = () => dispatch => {
             dispatch({type: FETCH_VOLUNTEER_DATA_FAILURE, payload: err})
         })
 }
+
+export const initializeState = () => dispatch => {
+    dispatch()
+}
