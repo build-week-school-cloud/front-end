@@ -48,13 +48,16 @@ letter-spacing:.1rem;
 function Login({ touched, errors, ...props}){
     const [user, setUser] = useState({
         username: '',
-        password: ''
+        password: '',
+        role: null
     })
+    //username: 'tylerdf', password: 'password1', role: 'student'
     const handleChanges = e => {
         setUser({...user, [e.target.name]: e.target.value})
     }
     const handleSubmit = e => {
         e.preventDefault();
+        console.log("submit user:", user)
         props.login(user)
     }
     return(
@@ -74,7 +77,7 @@ function Login({ touched, errors, ...props}){
                 { touched.password && errors.password && (<p>{errors.password}</p>)}
                 <label className='label' htmlFor='user'>
                     <div>Login Type:</div>
-                    <Field as='select' value={user.password} onChange={handleChanges} className='label2' type='checkbox' name='user' id='user'>
+                    <Field as='select' value={user.role} onChange={handleChanges} className='label2' type='checkbox' name='role' id='role'>
                         <option className='options' disabled>Choose one</option>
                         <option value='adminstator'>Adminstrator</option>
                         <option value='volunteer'>Volunteer</option>
@@ -90,11 +93,11 @@ function Login({ touched, errors, ...props}){
 }
 
 const SuperLogin = withFormik({
-mapPropsToValues({username, password, user}){
+mapPropsToValues({username, password, role}){
     return {
     username: username || '',
     password: password || '',
-    user: user || ''
+    role: role || ''
 }},
 
 validationSchema: Yup.object().shape({
