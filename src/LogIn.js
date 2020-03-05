@@ -15,6 +15,7 @@ const LogIn = (props) => {
         });
     };
 
+    
     return (
         <div className="logIn">
             <h1>Log in</h1>
@@ -26,7 +27,10 @@ const LogIn = (props) => {
                 <br />
                 <div className="password">
                     <label htmlFor="password">Password</label>
-                    <input id="password" type="password" onChange={handleChange} placeholde="Password" required/>
+                    {/* "Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" */}
+                    <input id="password" type="password" onChange={handleChange} placeholde="Password" 
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                           title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"/>
                 </div>
                 <br />
                 <div className="submit">
