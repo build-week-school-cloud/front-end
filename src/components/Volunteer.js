@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import {Link, Route } from 'react-router-dom';
 import VolunteerProfile from './Volunteer-Profile';
 import Login from './Login';
-import './Links.css'
+import './Links.css';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const Header = styled.h1`
 padding:.3rem;
@@ -33,8 +34,10 @@ function VolunteerView(){
 const [toDo, setToDo] = useState([]);
 
 useEffect(()=>{
-	axios.get('https://swapi.co/api/people/').then( res => setToDo(res.data.results)).catch( err => console.log(err))
-})
+	axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/volunteer').then(res => {
+		setToDo(res.data);
+	}).catch(err => console.log(err))
+   }, [])
     return(
         <CustomizeContainer className='container'>
             <Header>Welcome Back Name!</Header>
