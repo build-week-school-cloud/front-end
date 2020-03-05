@@ -7,6 +7,8 @@ import AdminProfile from './Admin-Profile';
 import Login from './Login';
 import './Links.css';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import { connect } from 'react-redux';
+import { fetchAdmin } from '../actions';
 
 const CustomNav = styled.nav`
 display:flex; 
@@ -30,13 +32,20 @@ flex-direction: column;
 align-items: center;
 `
 
-function AdminView(){
+function AdminView(props){
 
     const [toDo, setToDo] = useState([]);
 
     useEffect(()=>{
-        axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/admin').then(res => { setToDo(res.data)}).catch(err => console.log(err))
-       }, [])
+        // props.fetchAdmin();
+        // console.log('token', localStorage.getItem('token'))
+        axiosWithAuth(localStorage.getItem('token'))        
+            .get('https://cloudschoolbw.herokuapp.com/api/admin')
+            .then(res => {
+                setToDo(res.data)
+            })
+            .catch(err => console.log(err))
+    }, [])
     
     
     return(
@@ -60,4 +69,13 @@ function AdminView(){
     )
 }
 
-export default AdminView;
+const mapStateToProps = state => {
+    return {
+        welcomeMessage: state.welcomeMessage
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    { fetchAdmin }
+)(AdminView);

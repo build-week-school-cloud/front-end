@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components';
 import TeachersList from './Teacher';
 import Form from './Form-Search';
@@ -39,6 +39,7 @@ const [input, setInput] = useState('');
    useEffect(()=>{
     axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/student').then(res => {
         const array = res.data;
+        console.log(res);
         const filter = array.filter( teacher => (teacher.name.toLowerCase().includes(input.toLowerCase())))
         setDisplayed(filter)
     }
