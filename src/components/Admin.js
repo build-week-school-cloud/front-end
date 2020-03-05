@@ -37,11 +37,8 @@ function AdminView(props){
     const [toDo, setToDo] = useState([]);
 
     useEffect(()=>{
-        // axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/admin').then(res => {
-        //     console.log(res)
-        //     setToDo(res.data)
-        // }).catch(err => console.log(err))
         props.fetchAdmin();
+        // axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/admin').then(res => { setToDo(res.data)}).catch(err => console.log(err))
        }, [])
     
     
