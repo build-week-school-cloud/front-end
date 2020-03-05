@@ -39,17 +39,17 @@ useEffect(()=>{
         <CustomizeContainer className='container'>
             <Header>Welcome Back Name!</Header>
 			<CustomNav>
-				<Link className='links nestedlink' to='/volunteer/:id'>Profile</Link>
-				<Link className='links nestedlink' to='/volunteer/:id/todo-list'>Todo List</Link>
+				<Link className='links nestedlink' to='/volunteer'>Profile</Link>
+				<Link className='links nestedlink' to='/volunteer/todo-list'>Todo List</Link>
 				<Link className='links nestedlink' to='/'>Logout</Link>
 			</CustomNav>
 			<Route exact path='/'>
                 <Login/>
             </Route>
-			<Route exact path='/volunteer/:id'>
+			<Route exact path='/volunteer'>
 				<VolunteerProfile/>
 			</Route>
-			<Route path='/volunteer/:id/todo-list'>
+			<Route path='/volunteer/todo-list'>
 				<ToDoList toDo={toDo} />	
 			</Route>
         </CustomizeContainer>

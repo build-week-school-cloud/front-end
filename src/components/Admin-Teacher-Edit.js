@@ -64,10 +64,9 @@ function TeacherEdit({toDo}){
         <SignUpButton>Create</SignUpButton>
         <SignUpButton>Delete</SignUpButton>
         {toDo.map(todo => (
-                <CardDiv key={todo.heigh}>
-                    <h2>whats needs to be done: {todo.name}</h2>
-                    <div>description of what to do{todo.name}</div>
-                    <div>Due_date:{todo.mass}</div>
+                <CardDiv key={todo.id}>
+                    <h2>Task: {todo.name}</h2>
+                    <div>description:{todo.description}</div>
                 </CardDiv>
             ))}
 

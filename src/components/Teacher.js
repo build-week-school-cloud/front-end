@@ -48,11 +48,11 @@ function TeacherList({teachers}){
     return(
     <ContainerDiv>
         {teachers.map(teacher => (
-            <CardDiv key={teacher.height}>
+            <CardDiv key={teacher.id}>
                 <h2>{teacher.name}</h2>
-                <div>Subject: Math</div>
-                <div>Times_available: 2pm-6pm mon-fri </div>
-                <div>Location: Philly</div>
+                <div>Subject: {teacher.subject}</div>
+                <div>Times_available:{teacher.time} </div>
+                <div>Location: {teacher.location}</div>
                 <SignUpButton>Help</SignUpButton>
             </CardDiv>
         ))}

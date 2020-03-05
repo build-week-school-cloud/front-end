@@ -42,13 +42,13 @@ function Navigation (){
                     <Link  className='links' to='/sign-up'>Sign-Up</Link>
                 </div>
                 <div className='navLinks'>
-                    <Link className='links' to='/admin/:id'>Admin</Link>
+                    <Link className='links' to='/admin'>Admin</Link>
                 </div>
                 <div className='navLinks'>
-                    <Link className='links' to='/volunteer/:id'>Volunteer</Link>
+                    <Link className='links' to='/volunteer'>Volunteer</Link>
                 </div>
                 <div className='navLinks'>
-                    <Link className='links' to='/student/:id'>Student</Link>
+                    <Link className='links' to='/student'>Student</Link>
                 </div>
         </Container>
     )

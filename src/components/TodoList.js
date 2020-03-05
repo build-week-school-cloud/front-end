@@ -60,7 +60,7 @@ function ToDoList ({toDo}){
         <ContainerDiv>
             <Header>To Do List:</Header>
             {toDo.map(todo => (
-                <CardDiv key={todo.heigh}>
+                <CardDiv key={todo.height}>
                     <h2>{todo.name} <span>Due_date:{todo.mass}</span></h2>
                     <div>{todo.name}</div>
                     <MarkButton type='submit'>Marked as Complete</MarkButton>
