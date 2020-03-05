@@ -21,7 +21,7 @@ export const login = user => dispatch => {
     dispatch({type: LOGIN_START})
     console.log('User:', user)
     axiosWithAuth()
-        .post(`https://cloudschoolbw.herokuapp.com/api/auth/login`, {user})
+        .post(`https://cloudschoolbw.herokuapp.com/api/auth/login`, user)
         .then(res => {
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             console.log('login response', res);
