@@ -30,11 +30,10 @@ function App() {
         <Student/>
       </Route> */}
       <Switch>
-        <PrivateRoute path='/admin' component={Admin} />
+        <PrivateRoute path='/administrator' component={Admin} />
         <PrivateRoute path='/volunteer' component={Volunteer} />
         <PrivateRoute path='/student' component={Student} />
-      </Switch>
-      <Test/>
+      </Switch>      
     </div>
   );
 }

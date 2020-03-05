@@ -68,7 +68,7 @@ function SignUp({errors, touched, ...props}){
                     <div>Login Type:</div>
                     <Field as='select' value={newUser.role} onChange={handleChanges} className='label2' type='checkbox' name='role' id='role'>
                         <option className='options' disabled>Choose one</option>
-                        <option value='adminstator'>Adminstrator</option>
+                        <option value='administrator'>Administrator</option>
                         <option value='volunteer'>Volunteer</option>
                         <option value='student'>Student</option>
                     </Field>
