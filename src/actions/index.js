@@ -1,5 +1,6 @@
 import axiosWithAuth from '../utils/axiosWithAuth';
-// import axios from 'axios';
+import React from 'react';
+import axios from 'axios';
 
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
@@ -26,28 +27,34 @@ export const SET_USER = "SET_USER"
 export const login = user => dispatch => {
     dispatch({type: LOGIN_START})
     console.log('User:', user)
-    axiosWithAuth()
-        .post(`/auth/login`, user)
+    axios
+        .post(`https://cloudschoolbw.herokuapp.com/api/auth/login`, user)
         .then(res => {
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             dispatch({ type: SET_USER, payload: user})
             console.log('login response', res);
             localStorage.setItem('token', res.data.token)
+            localStorage.setItem('user_id', res.data.user_id)
+            localStorage.setItem('user_role', res.data.user_role)            
         })
         .catch(err => {
             console.log('login error', err)
             dispatch({type: LOGIN_FAILURE, payload: err})
+        })
+        .finally(() => {
+            window.location = `/${localStorage.getItem('user_role')}`
         });
 }
 
 export const register = user => dispatch => {
+    console.log(user);
     dispatch({type: REGISTER_START})
-    axiosWithAuth()
-        .post(`/auth/register`, user)
+    axios
+        .post(`https://cloudschoolbw.herokuapp.com/api/auth/register`, user)
         .then(res => {
             dispatch({type: REGISTER_SUCCESS, payload: res.data})
             console.log('register response', res)
-            localStorage.setItem('token', res.data.password)
+            // login({username: user.username, password: user.password});            
         })
         .catch(err => {
             dispatch({type: REGISTER_FAILURE, payload: err})

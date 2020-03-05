@@ -9,6 +9,7 @@ import './Login.css';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
 import { login } from '../actions';
+import { useHistory } from 'react-router-dom'
 
 const FormHolder = styled.form`
 display:flex;
@@ -46,6 +47,7 @@ letter-spacing:.1rem;
 `
 
 function Login({ touched, errors, ...props}){
+    let history = useHistory();
     const [user, setUser] = useState({
         username: '',
         password: '',
@@ -58,7 +60,7 @@ function Login({ touched, errors, ...props}){
     const handleSubmit = e => {
         e.preventDefault();
         console.log("submit user:", user)
-        props.login(user)
+        props.login(user)        
     }
     return(
         <DivContainer>
@@ -76,13 +78,13 @@ function Login({ touched, errors, ...props}){
                 </label>
                 { touched.password && errors.password && (<p>{errors.password}</p>)}
                 <label className='label' htmlFor='user'>
-                    <div>Login Type:</div>
+                    {/* <div>Login Type:</div>
                     <Field as='select' value={user.role} onChange={handleChanges} className='label2' type='checkbox' name='role' id='role'>
                         <option className='options' disabled>Choose one</option>
                         <option value='adminstator'>Adminstrator</option>
                         <option value='volunteer'>Volunteer</option>
                         <option value='student'>Student</option>
-                    </Field>
+                    </Field> */}
                 </label>
                 { touched.user && errors.user && (<p>{errors.user}</p>)}
                 <SignUpButton type='submit'>Sign In</SignUpButton>
