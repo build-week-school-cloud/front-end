@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import styled from 'styled-components'
 import TeachersEdit from './Admin-Teacher-Edit';
 import {Link, Route } from 'react-router-dom';
@@ -37,9 +37,15 @@ function AdminView(props){
     const [toDo, setToDo] = useState([]);
 
     useEffect(()=>{
-        props.fetchAdmin();
-        // axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/admin').then(res => { setToDo(res.data)}).catch(err => console.log(err))
-       }, [])
+        // props.fetchAdmin();
+        // console.log('token', localStorage.getItem('token'))
+        axiosWithAuth(localStorage.getItem('token'))        
+            .get('https://cloudschoolbw.herokuapp.com/api/admin')
+            .then(res => {
+                setToDo(res.data)
+            })
+            .catch(err => console.log(err))
+    }, [])
     
     
     return(

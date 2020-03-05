@@ -32,7 +32,7 @@ export const login = user => dispatch => {
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             dispatch({ type: SET_USER, payload: user})
             console.log('login response', res);
-            window.localStorage.setItem('token', res.data.token)
+            localStorage.setItem('token', res.data.token)
         })
         .catch(err => {
             console.log('login error', err)
@@ -47,7 +47,7 @@ export const register = user => dispatch => {
         .then(res => {
             dispatch({type: REGISTER_SUCCESS, payload: res.data})
             console.log('register response', res)
-            window.localStorage.setItem('token', res.data.password)
+            localStorage.setItem('token', res.data.password)
         })
         .catch(err => {
             dispatch({type: REGISTER_FAILURE, payload: err})
