@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components'
 import TeachersEdit from './Admin-Teacher-Edit';
 import {Link, Route } from 'react-router-dom';
@@ -7,6 +7,8 @@ import AdminProfile from './Admin-Profile';
 import Login from './Login';
 import './Links.css';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import { connect } from 'react-redux';
+import { fetchAdmin } from '../actions';
 
 const CustomNav = styled.nav`
 display:flex; 
@@ -30,15 +32,16 @@ flex-direction: column;
 align-items: center;
 `
 
-function AdminView(){
+function AdminView(props){
 
     const [toDo, setToDo] = useState([]);
 
     useEffect(()=>{
-        axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/admin').then(res => {
-            console.log(res)
-            setToDo(res.data)
-        }).catch(err => console.log(err))
+        // axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/admin').then(res => {
+        //     console.log(res)
+        //     setToDo(res.data)
+        // }).catch(err => console.log(err))
+        props.fetchAdmin();
        }, [])
     
     
@@ -63,4 +66,13 @@ function AdminView(){
     )
 }
 
-export default AdminView;
+const mapStateToProps = state => {
+    return {
+        welcomeMessage: state.welcomeMessage
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    { fetchAdmin }
+)(AdminView);

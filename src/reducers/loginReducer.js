@@ -1,12 +1,16 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions';
+import { FETCH_ADMIN_DATA, FETCH_ADMIN_DATA_SUCCESS, FETCH_ADMIN_DATA_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE } from '../actions';
 
 export const initialState = {
-    user: {},
+    welcomeMessage: '',
     token: '',
     userType: '', 
     error: '',
     logging: false,
-    login: false
+    login: false,
+    registering: false,
+    registered: false,
+    fetching: false,
+    adminData: []
 }
 
 export const loginReducer = (state = initialState, action) => {
@@ -16,21 +20,61 @@ export const loginReducer = (state = initialState, action) => {
                 ...state,
                 error: '',
                 logging: true,
-                login: false
+                login: false,
+                token: '',
+                userType: ''
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 logging: false,
                 login: true,
-                // user: action.payload
+                token: action.payload.token,
+                userType: action.payload.user_role,
+                welcomeMessage: action.payload.message
             }
         case LOGIN_FAILURE:
             return {
                 ...state,
                 logging: false,
                 error: action.payload
-            }            
+            }
+        case REGISTER_START:
+            return {
+                ...state,
+                error: '',
+                registering: true
+            };
+        case REGISTER_SUCCESS:
+            return {
+                ...state,
+                registering: false,
+                registered: true,
+                
+            }
+        case REGISTER_FAILURE:
+            return {
+                ...state,
+                registering: false,
+                error: action.payload
+            }
+        case FETCH_ADMIN_DATA:
+            return {
+                ...state,
+                fetching: true,
+                error: ''
+            }
+        case FETCH_ADMIN_DATA_SUCCESS:
+            return {
+                ...state,
+                fetching: false
+            }
+        case FETCH_ADMIN_DATA_FAILURE:
+            return {
+                ...state,
+                fetching: false,
+                error: action.payload
+            }
         default:
             return state;
     }
