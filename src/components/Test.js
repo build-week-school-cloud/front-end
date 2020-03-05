@@ -1,12 +1,12 @@
 import React from 'react'
-import { login, register } from '../actions'
+import { login, register, fetchAdmin } from '../actions'
 import { connect } from 'react-redux';
 import axios from 'axios'
 
 function Test(props) {
     const handleClick = e => {
         e.preventDefault();
-        props.register(user);
+        props.fetchAdmin();
         // axios
         //     .post('https://cloudschoolbw.herokuapp.com/api/auth/register', user)
         //     .then(res => {
@@ -31,5 +31,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {login, register}
+    {login, register, fetchAdmin}
 )(Test);

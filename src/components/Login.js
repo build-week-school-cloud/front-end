@@ -49,7 +49,7 @@ function Login({ touched, errors, ...props}){
     const [user, setUser] = useState({
         username: '',
         password: '',
-        role: null
+        role: 'choose one'
     })
     //username: 'tylerdf', password: 'password1', role: 'student'
     const handleChanges = e => {

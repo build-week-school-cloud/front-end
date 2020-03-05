@@ -11,7 +11,7 @@ export const ADD_TODO = "ADD_TODO";
 export const ADD_TODO_SUCCESS = "ADD_TODO_SUCCESS";
 export const ADD_TODO_FAILURE = "ADD_TODO_FAILURE";
 export const TOGGLE_TODO = "TOGGLE_TODO";
-export const FETCH_DATA = "FETCH_DATA";
+export const FETCH_ADMIN_DATA = "FETCH_ADMIN_DATA";
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 export const UPDATE_DATA = "UPDATE_DATA";
@@ -44,5 +44,18 @@ export const register = user => dispatch => {
         })
         .catch(err => {
             dispatch({type: REGISTER_FAILURE, payload: err})
+        })
+}
+
+export const fetchAdmin = () => dispatch => {
+    dispatch({type: FETCH_ADMIN_DATA})
+    axiosWithAuth()
+        .get('https://cloudschoolbw.herokuapp.com/api/student')
+        .then(res => {
+            console.log(res)
+            dispatch({type: FETCH_DATA_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            dispatch({type: FETCH_DATA_FAILURE, payload: err})
         })
 }

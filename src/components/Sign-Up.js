@@ -30,7 +30,7 @@ function SignUp({errors, touched, ...props}){
         full_name: '',
         username: '',
         password: '',
-        role: null,
+        role: 'choose one',
         email: '',
         phone: ''
     })
@@ -49,17 +49,17 @@ function SignUp({errors, touched, ...props}){
             <Form onSubmit={handleSubmit} className="form-holder">
                 <FontAwesomeIcon icon={faCloud} className='cloud-icon2' />
                 <h1>Create Account</h1>
-                <label class='label' htmlFor='full_name'>
+                <label className='label' htmlFor='full_name'>
                     <div>Full Name:</div>
                     <Field value={newUser.name} onChange={handleChanges} type='text' name='full_name' id='full_name' />
                 </label>
                 { touched.name && errors.name && (<p>{errors.name}</p>)}
-                <label class='label' htmlFor='username'>
+                <label className='label' htmlFor='username'>
                     <div>Username:</div>
                     <Field value={newUser.username} onChange={handleChanges} type='text' name='username' id='username'/>
                 </label>
                 { touched.username && errors.username && (<p>{errors.username}</p>)}
-                <label class='label' htmlFor='password'>
+                <label className='label' htmlFor='password'>
                     <div>Password:</div>
                     <Field value={newUser.password} onChange={handleChanges} type='password' name='password' id='password'/>
                 </label>
@@ -73,17 +73,17 @@ function SignUp({errors, touched, ...props}){
                         <option value='student'>Student</option>
                     </Field>
                 </label>
-                <label class='label' htmlFor='county'>
+                <label className='label' htmlFor='county'>
                     <div>Location:</div>
                     <Field type='text' name='location' id='location'/>
                 </label>
                 { touched.location && errors.location && (<p>{errors.location}</p>)}
-                <label class='label' htmlFor='email'>
+                <label className='label' htmlFor='email'>
                     <div>Email:</div>
                     <Field value={newUser.email} onChange={handleChanges} type='text' name='email' id='email'/>
                 </label>
                 { touched.email && errors.email && (<p>{errors.email}</p>)}
-                <label class='label' htmlFor='phone'>
+                <label className='label' htmlFor='phone'>
                     <div>Phone Number:</div>
                     <Field value={newUser.phone} onChange={handleChanges} type='text'name='phone' id='phone'/>
                 </label>
