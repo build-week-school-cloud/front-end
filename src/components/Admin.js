@@ -6,6 +6,7 @@ import {Link, Route } from 'react-router-dom';
 import AdminProfile from './Admin-Profile';
 import Login from './Login';
 import './Links.css';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const CustomNav = styled.nav`
 display:flex; 
@@ -33,27 +34,31 @@ function AdminView(){
 
     const [toDo, setToDo] = useState([]);
 
-useEffect(()=>{
-	axios.get('https://swapi.co/api/people/').then( res => setToDo(res.data.results)).catch( err => console.log(err))
-})
+    useEffect(()=>{
+        axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/admin').then(res => {
+            console.log(res)
+            setToDo(res.data)
+        }).catch(err => console.log(err))
+       }, [])
+    
     
     return(
         <CustomizeContainer>
             <Header>Welcome Back Name!</Header>
             <CustomNav>
-                <Link className='links nestedlink' to='/admin/:id'>Profile</Link>
-                <Link className='links nestedlink' to='/admin/:id/edit-volunteer-list'>Edit Teachers to do List</Link>
+                <Link className='links nestedlink' to='/admin'>Profile</Link>
+                <Link className='links nestedlink' to='/admin/edit-volunteer-list'>Edit Teachers to do List</Link>
                 <Link className='links nestedlink' to='/'>Logout</Link>
             </CustomNav>
             <Route exact path='/'>
                 <Login/>
             </Route>
-            <Route exact path='/admin/:id'>
+            <Route exact path='/admin'>
                 <AdminProfile/>
             </Route>
-            <Route path='/admin/:id/edit-volunteer-list'>
+            <Route path='/admin/edit-volunteer-list'>
                 <TeachersEdit toDo={toDo}/>
-            </Route>    
+            </Route>   
         </CustomizeContainer>
     )
 }
