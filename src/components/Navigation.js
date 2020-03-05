@@ -29,6 +29,24 @@ text-shadow: -1.5px -1.5px 0 #003F87, 1.5px 1.5px 0 #003F87, 0 -1.5px 0 #003F87,
 letter-spacing: 1px;
 font-size:1.5rem;
 `
+const SignOutButton = styled.button`
+border:#003F87 solid 1px;
+width: 15%;
+padding: 1rem 2rem;
+margin:0rem 3rem;
+color: #00B2EE;;
+border-radius: 10px;
+font-size: 1rem;
+background-color:white;
+text-shadow: -1px -1px 0 #003F87, 1px 1px 0 #003F87, 0 -1px 0 #003F87,
+0 1px 0 #003F87, 1px -1px 0 #003F87, -1px 1px 0 #003F87, 1px 0 0 #003F87,
+-1px 0 0 #003F87; 
+font-size:1.5rem;
+&:hover{
+    transform: scale(1.1);
+    transition: .5s;
+}
+`
 
 class Navigation extends React.Component {
     constructor(props){
@@ -61,7 +79,7 @@ class Navigation extends React.Component {
                         <Link className='links' to='/student'>Student</Link>
                     </div>)}
                     {localStorage.getItem('token') ?
-                        (<button onClick={this.handleClick}>Log Out</button>) :
+                        (<SignOutButton onClick={this.handleClick}>Log Out</SignOutButton>) :
                         (<><div className='navLinks'>
                         <Link className='links' to='/'>Login</Link>
                     </div>
