@@ -21,6 +21,7 @@ export const FETCH_VOLUNTEER_DATA = "FETCH_ADMIN_DATA";
 export const FETCH_VOLUNTEER_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_VOLUNTEER_DATA_FAILURE = "FETCH_DATA_FAILURE";
 export const UPDATE_DATA = "UPDATE_DATA";
+export const SET_USER = "SET_USER"
 
 export const login = user => dispatch => {
     dispatch({type: LOGIN_START})
@@ -29,6 +30,7 @@ export const login = user => dispatch => {
         .post(`/auth/login`, user)
         .then(res => {
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+            dispatch({ type: SET_USER, payload: user})
             console.log('login response', res);
             window.localStorage.setItem('token', res.data.token)
         })

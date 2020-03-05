@@ -1,7 +1,8 @@
-import { FETCH_ADMIN_DATA, FETCH_ADMIN_DATA_SUCCESS, FETCH_ADMIN_DATA_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE } from '../actions';
+import { FETCH_ADMIN_DATA, FETCH_ADMIN_DATA_SUCCESS, FETCH_ADMIN_DATA_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE, SET_USER } from '../actions';
 
 export const initialState = {
     welcomeMessage: '',
+    username: '',
     token: '',
     userType: '', 
     error: '',
@@ -50,7 +51,10 @@ export const loginReducer = (state = initialState, action) => {
                 ...state,
                 registering: false,
                 registered: true,
-                
+                token: action.payload.password,
+                userType: action.payload.role,
+                login: true,
+                username: action.payload.username
             }
         case REGISTER_FAILURE:
             return {
@@ -74,6 +78,11 @@ export const loginReducer = (state = initialState, action) => {
                 ...state,
                 fetching: false,
                 error: action.payload
+            }
+        case SET_USER:
+            return {
+                ...state,
+                username: action.payload.username
             }
         default:
             return state;

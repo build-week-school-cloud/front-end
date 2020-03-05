@@ -39,6 +39,7 @@ const [input, setInput] = useState('');
    useEffect(()=>{
     axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/student').then(res => {
         const array = res.data;
+        console.log(res);
         const filter = array.filter( teacher => (teacher.name.toLowerCase().includes(input.toLowerCase())))
         setDisplayed(filter)
     }
