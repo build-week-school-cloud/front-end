@@ -6,7 +6,8 @@ import Form from './Form-Search';
 import { Link, Route } from 'react-router-dom';
 import StudentProfile from './Student-profile';
 import Login from './Login';
-import './Links.css'
+import './Links.css';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const Header = styled.h1`
 padding:.3rem;
@@ -36,13 +37,14 @@ const [teachers, setTeachers] = useState([]);
 const [displayed, setDisplayed ] = useState([])
 const [input, setInput] = useState('');
 
-    useEffect(()=>{
-        axios.get('https://swapi.co/api/people/').then(res => {
-            setTeachers(res.data.results); 
-            setDisplayed(res.data.results);
-    }).catch(err => console.log(err))
+// useEffect(()=>{
+//     axiosWithAuth.get('').then(res => {
+//         console.log(res)
+//         // setTeachers(res.data.results); 
+//         // setDisplayed(res.data.results);
+// }).catch(err => console.log(err))
 
-    },[])
+//     },[])
    const inputChange = e => {
         setInput(e.target.value)
         const filtered = teachers.filter( teacher => (teacher.name.toLowerCase().includes(input.toLowerCase())))

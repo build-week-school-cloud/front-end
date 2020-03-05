@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useState } from 'react';
 import {withFormik, Form ,  Field} from 'formik';
 import styled from 'styled-components';
@@ -9,6 +9,8 @@ import './Login.css';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
 import { login } from '../actions';
+
+
 
 const FormHolder = styled.form`
 display:flex;
@@ -50,6 +52,7 @@ function Login({ touched, errors, ...props}){
         username: '',
         password: ''
     })
+ 
     const handleChanges = e => {
         setUser({...user, [e.target.name]: e.target.value})
     }
