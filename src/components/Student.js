@@ -33,22 +33,21 @@ align-items: center;
 
 function StudentView(){
     
-const [teachers, setTeachers] = useState([]);
 const [displayed, setDisplayed ] = useState([])
 const [input, setInput] = useState('');
 
    useEffect(()=>{
     axiosWithAuth().get('https://cloudschoolbw.herokuapp.com/api/student').then(res => {
-        console.log(res.data)
-        setDisplayed(res.data)
-        setTeachers(res.data)
-    }).catch(err => console.log(err))
-   }, [])
+        const array = res.data;
+        const filter = array.filter( teacher => (teacher.name.toLowerCase().includes(input.toLowerCase())))
+        setDisplayed(filter)
+    }
+        ).catch(err => console.log(err))
+
+   },[input])
 
    const inputChange = e => {
         setInput(e.target.value)
-        const filtered = teachers.filter( teacher => (teacher.name.toLowerCase().includes(input.toLowerCase())))
-        setDisplayed(filtered)
     }
 
     return(
@@ -72,5 +71,6 @@ const [input, setInput] = useState('');
         </CustomizeContainer>
     )
 }
+
 
 export default StudentView;
