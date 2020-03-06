@@ -30,7 +30,7 @@ function SignUp({errors, touched, ...props}){
         full_name: '',
         username: '',
         password: '',
-        role: 'choose one',
+        role: '',
         email: '',
         phone: ''
     })
