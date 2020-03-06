@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components'
 import TeachersEdit from './Admin-Teacher-Edit';
 import {Link, Route } from 'react-router-dom';
@@ -8,10 +8,10 @@ import Login from './Login';
 import './Links.css';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { connect } from 'react-redux';
-import { fetchAdmin } from '../actions';
+import { fetchAdmin, fetchAdminSuccess, fetchAdminFailure, deleteTodo, deleteTodoSuccess, deleteTodoFailure } from '../actions';
 import AddTodo from './AddTodo';
 import TodoItem from './TodoItem';
-import { setIn } from 'formik';
+// import { setIn } from 'formik';
 
 const CustomNav = styled.nav`
 display:flex; 
@@ -48,14 +48,19 @@ function AdminView(props){
 
     useEffect(()=>{
         // setToDo(props.fetchAdmin())
-        console.log(toDo)        
+        // console.log(toDo)
+        props.fetchAdmin()
         axiosWithAuth(localStorage.getItem('token'))        
             .get('https://cloudschoolbw.herokuapp.com/api/admin')
             .then(res => {
                 let newArray = res.data
                 setToDo(newArray)
+                props.fetchAdminSuccess(res.data)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                props.fetchAdminFailure(err)
+            })
     }, [increment])
 
     // useEffect(() => {
@@ -71,14 +76,17 @@ function AdminView(props){
 
     const handleDelete = e => {
         e.preventDefault();
+        props.deleteTodo();
         axiosWithAuth()
             .delete(`/admin/${e.target.id}`)
             .then(res => {
                 console.log('Delete response', res)
                 setIncrement(increment + 1)
+                props.deleteTodoSuccess(res.data);
             })
             .catch(err => {
                 console.log(err)
+                props.deleteTodoFailure(err);
             })
     }
 
@@ -130,5 +138,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { fetchAdmin }
+    { fetchAdmin, fetchAdminSuccess, fetchAdminFailure, deleteTodo, deleteTodoSuccess, deleteTodoFailure }
 )(AdminView);
