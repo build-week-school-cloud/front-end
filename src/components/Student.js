@@ -56,7 +56,7 @@ const [input, setInput] = useState('');
             <Header>{localStorage.getItem('welcome_message')}</Header>
             <CustomNav>
                 {/* <Link className='links nestedlink' to='/student'>Profile</Link> */}
-                {/* <Link className='links nestedlink' to='/student/search-teachers'>Search for Teachers</Link> */}
+                <Link className='links nestedlink' to='/student/search-teachers'>Search for Teachers</Link>
                 {/* <Link className='links nestedlink' to='/'>Logout</Link> */}
             </CustomNav>
             <Route exact path='/'>
