@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { useState, useEffect } from 'react'
+import { connect } from 'react-redux';
+import { addTodoStart, addTodoSuccess, addTodoFailure } from '../actions';
 
 const DivContainer = styled.div`
 display: flex;
@@ -25,7 +27,7 @@ const Title = styled.h1`
 letter-spacing:.1rem;
 `
 
-export default function AddTodo(props) {
+function AddTodo(props) {
     const [todo, setTodo] = useState({
         name: '',
         description: ''
@@ -45,14 +47,17 @@ export default function AddTodo(props) {
     const handleSubmit = e => {
         e.preventDefault();
         if (props.editing === false) {
+            props.addTodoStart();
             axiosWithAuth()
                 .post('/admin', todo)
                 .then(res => {
                     console.log(res)
                     props.addOne()
+                    props.addTodoSuccess(res.data)
             })
             .catch(err => {
                 console.log(err)
+                props.addTodoFailure(err);
             })
         } else if (props.editing === true) {
             axiosWithAuth()
@@ -84,3 +89,14 @@ export default function AddTodo(props) {
         </DivContainer>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        error: state.error
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    { addTodoStart, addTodoSuccess, addTodoFailure}
+)(AddTodo)
