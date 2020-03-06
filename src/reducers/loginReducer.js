@@ -23,7 +23,8 @@ export const loginReducer = (state = initialState, action) => {
                 logging: true,
                 login: false,
                 token: '',
-                userType: ''
+                userType: '',
+                adminData: []
             };
         case LOGIN_SUCCESS:
             return {
@@ -71,7 +72,8 @@ export const loginReducer = (state = initialState, action) => {
         case FETCH_ADMIN_DATA_SUCCESS:
             return {
                 ...state,
-                fetching: false
+                fetching: false,
+                adminData: action.payload
             }
         case FETCH_ADMIN_DATA_FAILURE:
             return {

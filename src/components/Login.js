@@ -60,7 +60,12 @@ function Login({ touched, errors, ...props}){
     const handleSubmit = e => {
         e.preventDefault();
         console.log("submit user:", user)
-        props.login(user)        
+        props.login(user)
+        setTimeout(function(){
+            if (localStorage.getItem('token')) {
+                history.push(`/${localStorage.getItem('user_role')}`)
+            }            
+        }, 1000)
     }
     return(
         <DivContainer>

@@ -40,11 +40,11 @@ useEffect(()=>{
    }, [])
     return(
         <CustomizeContainer className='container'>
-            <Header>Welcome Back Name!</Header>
+            <Header>{localStorage.getItem('welcome_message')}</Header>
 			<CustomNav>
-				<Link className='links nestedlink' to='/volunteer'>Profile</Link>
-				<Link className='links nestedlink' to='/volunteer/todo-list'>Todo List</Link>
-				<Link className='links nestedlink' to='/'>Logout</Link>
+				{/* <Link className='links nestedlink' to='/volunteer'>Profile</Link> */}
+				{/* <Link className='links nestedlink' to='/volunteer/todo-list'>Todo List</Link> */}
+				{/* <Link className='links nestedlink' to='/'>Logout</Link> */}
 			</CustomNav>
 			<Route exact path='/'>
                 <Login/>
