@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
-import { useState } from 'react'
+import axiosWithAuth from '../utils/axiosWithAuth';
+import { useState, useEffect } from 'react'
 
 const DivContainer = styled.div`
 display: flex;
@@ -24,35 +25,61 @@ const Title = styled.h1`
 letter-spacing:.1rem;
 `
 
-export default function AddTodo() {
+export default function AddTodo(props) {
     const [todo, setTodo] = useState({
         name: '',
         description: ''
     })
+    
+    useEffect(() => {
+        return
+    }, [props.editing])
 
     const handleChanges = e => {
         setTodo({
             ...todo,
             [e.target.name]: e.target.value
         })
-    }
+    }    
 
     const handleSubmit = e => {
         e.preventDefault();
+        if (props.editing === false) {
+            axiosWithAuth()
+                .post('/admin', todo)
+                .then(res => {
+                    console.log(res)
+                    props.addOne()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        } else if (props.editing === true) {
+            axiosWithAuth()
+                .put(`/admin/${props.itemToEdit.id}`, todo)
+                .then(res => {
+                    console.log('Edit response', res)
+                    props.addOne();
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        
     }
     return (
         <DivContainer>
             <form onSubmit={handleSubmit} className='form-holder'>
-                <Title>Add Todo Item</Title>
+                <Title>{props.editing === false ? 'Add Todo Item' : 'Edit Todo Item'}</Title>
                 <label className='label' htmlFor='name'>
                     <div>Name:</div>
                     <input type='text' value={todo.name} onChange={handleChanges} name='name' id='name'/>
                 </label>                
-                <label className='label' htmlFor='password'>
+                <label className='label' htmlFor='description'>
                     <div>Description:</div>
-                    <input type='password' value={todo.description} onChange={handleChanges} name='password' id='password'/>
+                    <input type='text' value={todo.description} onChange={handleChanges} name='description' id='description'/>
                 </label>
-                <Button type='submit'>Add Todo</Button>                
+                <Button type='submit'>{props.editing === false ? 'Add Todo' : 'Edit Todo'}</Button>                
             </form>
         </DivContainer>
     )

@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { fetchAdmin } from '../actions';
 import AddTodo from './AddTodo';
 import TodoItem from './TodoItem';
+import { setIn } from 'formik';
 
 const CustomNav = styled.nav`
 display:flex; 
@@ -37,7 +38,13 @@ align-items: center;
 function AdminView(props){
 
     const [toDo, setToDo] = useState([]);
-    const [itemToEdit, setItemToEdit] = useState({});
+    const [itemToEdit, setItemToEdit] = useState({
+        id: '',
+        name: '',
+        description: ''
+    });
+    const [increment, setIncrement] = useState(0);
+    const [editing, setEditing] = useState(false);
 
     useEffect(()=>{
         // setToDo(props.fetchAdmin())
@@ -49,7 +56,7 @@ function AdminView(props){
                 setToDo(newArray)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [increment])
 
     // useEffect(() => {
     //     console.log('useeffect', props.adminData)
@@ -68,11 +75,16 @@ function AdminView(props){
             .delete(`/admin/${e.target.id}`)
             .then(res => {
                 console.log('Delete response', res)
+                setIncrement(increment + 1)
             })
             .catch(err => {
                 console.log(err)
             })
     }
+
+    const addOne = () => {
+        setIncrement(increment + 1)
+    }    
     
     return(
         <CustomizeContainer>
@@ -91,8 +103,19 @@ function AdminView(props){
             <Route path='/admin/edit-volunteer-list'>
                 <TeachersEdit toDo={props.adminData}/>
             </Route>
-            <TodoItem handleClick={handleClick} handleDelete={handleDelete} todoList={toDo} />
-            <AddTodo />
+            <TodoItem 
+                handleClick={handleClick} 
+                handleDelete={handleDelete} 
+                todoList={toDo}
+                setItemToEdit={setItemToEdit}
+                setEditing={setEditing}
+            />
+            <AddTodo 
+                addOne={addOne} 
+                itemToEdit={itemToEdit}
+                setItemToEdit={setItemToEdit}
+                editing={editing}                
+            />
         </CustomizeContainer>
     )
 }
