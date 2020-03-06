@@ -26,6 +26,9 @@ export const UPDATE_TODO_START = "UPDATE_TODO_START"
 export const UPDATE_TODO_SUCCESS = "UPDATE_TODO_SUCCESS"
 export const UPDATE_TODO_FAILURE = "UPDATE_TODO_FAILURE"
 export const SET_USER = "SET_USER"
+export const DELETE_TODO_START = "DELETE_TODO_START"
+export const DELETE_TODO_SUCCESS = "DELETE_TODO_SUCCESS"
+export const DELETE_TODO_FAILURE = "DELETE_TODO_FAILURE"
 
 export const updateTodo = todo => dispatch => {
     dispatch({type: UPDATE_TODO_START})
@@ -82,15 +85,23 @@ export const register = user => dispatch => {
 
 export const fetchAdmin = () => dispatch => {
     dispatch({type: FETCH_ADMIN_DATA})
-    axiosWithAuth()
-        .get('/admin')
-        .then(res => {
-            console.log(res);
-            dispatch({type: FETCH_ADMIN_DATA_SUCCESS, payload: res.data});            
-        })
-        .catch(err => {
-            dispatch({type: FETCH_ADMIN_DATA_FAILURE, payload: err})
-        })
+    // axiosWithAuth()
+    //     .get('/admin')
+    //     .then(res => {
+    //         console.log(res);
+    //         dispatch({type: FETCH_ADMIN_DATA_SUCCESS, payload: res.data});            
+    //     })
+    //     .catch(err => {
+    //         dispatch({type: FETCH_ADMIN_DATA_FAILURE, payload: err})
+    //     })
+}
+
+export const fetchAdminSuccess = (data) => dispatch => {
+    dispatch({type: FETCH_ADMIN_DATA_SUCCESS, payload: data})
+}
+
+export const fetchAdminFailure = (err) => dispatch => {
+    dispatch({type: FETCH_ADMIN_DATA_FAILURE, payload: err})
 }
 
 export const fetchStudent = () => dispatch => {
@@ -117,4 +128,16 @@ export const fetchVolunteer = () => dispatch => {
         .catch(err => {
             dispatch({type: FETCH_VOLUNTEER_DATA_FAILURE, payload: err})
         })
+}
+
+export const deleteTodo = () => dispatch => {
+    dispatch({type: DELETE_TODO_START})
+}
+
+export const deleteTodoSuccess = (data) => dispatch => {
+    dispatch({type: DELETE_TODO_SUCCESS, payload: data})
+}
+
+export const deleteTodoFailure = (err) => dispatch => {
+    dispatch({type: DELETE_TODO_FAILURE, payload: err})
 }
