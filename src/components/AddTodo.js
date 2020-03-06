@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import { addTodoStart, addTodoSuccess, addTodoFailure } from '../actions';
+import { addTodoStart, addTodoSuccess, addTodoFailure, editTodoStart, editTodoSuccess, editTodoFailure } from '../actions';
 
 const DivContainer = styled.div`
 display: flex;
@@ -60,14 +60,17 @@ function AddTodo(props) {
                 props.addTodoFailure(err);
             })
         } else if (props.editing === true) {
+            props.editTodoStart();
             axiosWithAuth()
                 .put(`/admin/${props.itemToEdit.id}`, todo)
                 .then(res => {
                     console.log('Edit response', res)
                     props.addOne();
+                    props.editTodoSuccess(res.data)
                 })
                 .catch(err => {
                     console.log(err)
+                    props.editTodoFailure(err)
                 })
         }
         
@@ -98,5 +101,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { addTodoStart, addTodoSuccess, addTodoFailure}
+    { addTodoStart, addTodoSuccess, addTodoFailure, editTodoStart, editTodoSuccess, editTodoFailure}
 )(AddTodo)

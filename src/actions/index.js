@@ -29,7 +29,9 @@ export const DELETE_TODO_FAILURE = "DELETE_TODO_FAILURE"
 export const ADD_TODO_START = "ADD_TODO_START"
 export const ADD_TODO_SUCCESS = "ADD_TODO_SUCCESS"
 export const ADD_TODO_FAILURE = "ADD_TODO_FAILURE"
-
+export const EDIT_TODO_START = "EDIT_TODO_START"
+export const EDIT_TODO_SUCCESS = "EDIT_TODO_SUCCESS"
+export const EDIT_TODO_FAILURE = "EDIT_TODO_FAILURE"
 
 export const updateTodo = todo => dispatch => {
     dispatch({type: UPDATE_TODO_START})
@@ -153,4 +155,16 @@ export const addTodoSuccess = (data) => dispatch => {
 
 export const addTodoFailure = (err) => dispatch => {
     dispatch({type: ADD_TODO_FAILURE, payload: err})
-} 
+}
+
+export const editTodoStart = () => dispatch => {
+    dispatch({type: EDIT_TODO_START})
+}
+
+export const editTodoSuccess = (data) => dispatch => {
+    dispatch({type: EDIT_TODO_SUCCESS, payload: data})
+}
+
+export const editTodoFailure = (err) => dispatch => {
+    dispatch({type: EDIT_TODO_FAILURE, payload: err})
+}
