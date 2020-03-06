@@ -40,7 +40,7 @@ function SignUp({errors, touched, ...props}){
     const handleSubmit = e => {
         e.preventDefault();
         console.log("Submit New User:", newUser);
-        if (newUser.role != null) {
+        if (newUser.role != '') {
             props.register(newUser);
         }
     }
