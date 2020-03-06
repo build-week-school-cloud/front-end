@@ -8,9 +8,6 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
-export const ADD_TODO = "ADD_TODO";
-export const ADD_TODO_SUCCESS = "ADD_TODO_SUCCESS";
-export const ADD_TODO_FAILURE = "ADD_TODO_FAILURE";
 export const TOGGLE_TODO = "TOGGLE_TODO";
 export const FETCH_ADMIN_DATA = "FETCH_ADMIN_DATA";
 export const FETCH_ADMIN_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
@@ -29,6 +26,12 @@ export const SET_USER = "SET_USER"
 export const DELETE_TODO_START = "DELETE_TODO_START"
 export const DELETE_TODO_SUCCESS = "DELETE_TODO_SUCCESS"
 export const DELETE_TODO_FAILURE = "DELETE_TODO_FAILURE"
+export const ADD_TODO_START = "ADD_TODO_START"
+export const ADD_TODO_SUCCESS = "ADD_TODO_SUCCESS"
+export const ADD_TODO_FAILURE = "ADD_TODO_FAILURE"
+export const EDIT_TODO_START = "EDIT_TODO_START"
+export const EDIT_TODO_SUCCESS = "EDIT_TODO_SUCCESS"
+export const EDIT_TODO_FAILURE = "EDIT_TODO_FAILURE"
 
 export const updateTodo = todo => dispatch => {
     dispatch({type: UPDATE_TODO_START})
@@ -140,4 +143,28 @@ export const deleteTodoSuccess = (data) => dispatch => {
 
 export const deleteTodoFailure = (err) => dispatch => {
     dispatch({type: DELETE_TODO_FAILURE, payload: err})
+}
+
+export const addTodoStart = () => dispatch => {
+    dispatch({type: ADD_TODO_START})
+}
+
+export const addTodoSuccess = (data) => dispatch => {
+    dispatch({type: ADD_TODO_SUCCESS, payload: data})
+}
+
+export const addTodoFailure = (err) => dispatch => {
+    dispatch({type: ADD_TODO_FAILURE, payload: err})
+}
+
+export const editTodoStart = () => dispatch => {
+    dispatch({type: EDIT_TODO_START})
+}
+
+export const editTodoSuccess = (data) => dispatch => {
+    dispatch({type: EDIT_TODO_SUCCESS, payload: data})
+}
+
+export const editTodoFailure = (err) => dispatch => {
+    dispatch({type: EDIT_TODO_FAILURE, payload: err})
 }
