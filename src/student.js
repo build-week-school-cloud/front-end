@@ -33,27 +33,23 @@ align-items: center;
 
 function StudentView(){
     
-const [teachers, setTeachers] = useState({name:['jim', 'tim', 'will', 'bill', 'dylan', 'steph', 'mike', 'ben', 'howard', 'stern', 'jacob', 'alex', 'mark', 'dev']});
-// const [displayed , setDisplayed] = useState([]);
-// const [input, setInput] = useState('');
-    // useEffect(()=>{
-    //     axios.get('url').then(res => {
-    //         const teacher = res.filter( teacher => {
-    //             teacher.name.toLowerCase().includes(Search.toLowerCase())
-    //         })
-    //                 setUserInfo(res);
-    //                 // setToDo(res);
-    //             }).catch(err => console.log(err))
+const [teachers, setTeachers] = useState([]);
 
-    // })
-//    const inputChange = e => {
-//         setInput(e.target.value);
+const [input, setInput] = useState('');
+    useEffect(()=>{
+        axios.get('https://swapi.co/api/people').then(res => {
+            const filtered = res.data
+                setTeachers(res.data.results)
 
-//         const search = teachers.name.filter( teacher => teacher.toLowerCase().includes(input.toLowerCase()))
+                }).catch(err => console.log(err))
 
-//         setDisplayed(search)
-//     }
+    },[input])
+   const inputChange = e => {
+        setInput(e.target.value);
 
+    }
+    
+console.log(teachers)
     return(
         <CustomizeContainer>
             <Header>Welcome Back Name!</Header>
@@ -69,7 +65,7 @@ const [teachers, setTeachers] = useState({name:['jim', 'tim', 'will', 'bill', 'd
                 <StudentProfile/>
             </Route>
             <Route path='/student/:id/search-teachers'>
-                <Form/>
+                <Form inputChange={inputChange}/>
                 <TeachersList teachers={teachers} />
             </Route>
         </CustomizeContainer>

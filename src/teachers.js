@@ -37,11 +37,12 @@ background-color: #00B2EE;
 `
 
 function TeacherList({teachers}){
+    console.log(teachers)
     return(
     <ContainerDiv>
-        {teachers.name.map(teacher => (
-            <CardDiv key={teacher}>
-                <h2>{teacher}</h2>
+        {teachers.map(teacher => (
+            <CardDiv key={teacher.height} >
+                <h2>{teacher.name}</h2>
                 <div>Subject: Math</div>
                 <div>Times_available: 2pm-6pm mon-fri </div>
                 <div>Location: Philly</div>

@@ -5,8 +5,8 @@ import { Route } from 'react-router-dom';
 import Login from './Login';
 import SignUp from './Sign';
 import Admin from './Admin';
-import Volunteer from './Volunteer';
-import Student from './Student';
+import Volunteer from './volunteer';
+import Student from './student';
 
 
 
