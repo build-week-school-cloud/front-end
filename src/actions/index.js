@@ -22,7 +22,25 @@ export const FETCH_VOLUNTEER_DATA = "FETCH_ADMIN_DATA";
 export const FETCH_VOLUNTEER_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_VOLUNTEER_DATA_FAILURE = "FETCH_DATA_FAILURE";
 export const UPDATE_DATA = "UPDATE_DATA";
+export const UPDATE_TODO_START = "UPDATE_TODO_START"
+export const UPDATE_TODO_SUCCESS = "UPDATE_TODO_SUCCESS"
+export const UPDATE_TODO_FAILURE = "UPDATE_TODO_FAILURE"
 export const SET_USER = "SET_USER"
+
+export const updateTodo = todo => dispatch => {
+    dispatch({type: UPDATE_TODO_START})
+    console.log(todo.id);
+    axiosWithAuth()
+        .put(`/admin/${todo.id}`, todo)
+        .then(res => {
+            console.log('update response', res)
+            dispatch({type: UPDATE_TODO_SUCCESS})
+        })
+        .err(err => {
+            console.log(err)
+            dispatch({type: UPDATE_TODO_FAILURE})
+        })
+}
 
 export const login = user => dispatch => {
     dispatch({type: LOGIN_START})
@@ -35,14 +53,15 @@ export const login = user => dispatch => {
             console.log('login response', res);
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('user_id', res.data.user_id)
-            localStorage.setItem('user_role', res.data.user_role)            
+            localStorage.setItem('user_role', res.data.user_role)
+            localStorage.setItem('welcome_message', res.data.message)
         })
         .catch(err => {
             console.log('login error', err)
             dispatch({type: LOGIN_FAILURE, payload: err})
         })
         .finally(() => {
-            window.location = `/${localStorage.getItem('user_role')}`
+            // window.location = `/${localStorage.getItem('user_role')}`
         });
 }
 
@@ -66,8 +85,8 @@ export const fetchAdmin = () => dispatch => {
     axiosWithAuth()
         .get('/admin')
         .then(res => {
-            console.log(res)
-            dispatch({type: FETCH_ADMIN_DATA_SUCCESS, payload: res.data})
+            console.log(res);
+            dispatch({type: FETCH_ADMIN_DATA_SUCCESS, payload: res.data});            
         })
         .catch(err => {
             dispatch({type: FETCH_ADMIN_DATA_FAILURE, payload: err})
@@ -98,8 +117,4 @@ export const fetchVolunteer = () => dispatch => {
         .catch(err => {
             dispatch({type: FETCH_VOLUNTEER_DATA_FAILURE, payload: err})
         })
-}
-
-export const initializeState = () => dispatch => {
-    dispatch()
 }

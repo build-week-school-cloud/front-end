@@ -6,6 +6,7 @@ import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import './Navigation.css'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Container = styled.div`
 display: flex;
@@ -48,49 +49,48 @@ font-size:1.5rem;
 }
 `
 
-class Navigation extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            // history: useHistory()
-        }
-    }
-
-    handleClick = e => {
+function Navigation(){
+    let history = useHistory();
+    useEffect(() => {
+        
+        return 
+    }, [history.location])
+    
+    const handleClick = e => {
         e.preventDefault();
         localStorage.clear();
         window.location = '/'
     }
-    render(){
-        return (
-            <Container>
-                <ContainerLogo>
-                    <FontAwesomeIcon icon={faCloud} className='cloud-icon' />
-                    <h1>School in the Cloud</h1>
-                </ContainerLogo>
-                    { }                    
-                    {localStorage.getItem('user_role') === 'administrator' && (<div className='navLinks'>
-                        <Link className='links' to='/admin'>Admin</Link>
-                    </div>)}
-                    {localStorage.getItem('user_role') === 'volunteer' && (<div className='navLinks'>
-                        <Link className='links' to='/volunteer'>Volunteer</Link>
-                    </div>)}
-                    {localStorage.getItem('user_role') === 'student' && (<div className='navLinks'>
-                        <Link className='links' to='/student'>Student</Link>
-                    </div>)}
-                    {localStorage.getItem('token') ?
-                        (<SignOutButton onClick={this.handleClick}>Log Out</SignOutButton>) :
-                        (<><div className='navLinks'>
-                        <Link className='links' to='/'>Login</Link>
-                    </div>
-                    <div className='navLinks'>
-                        <Link  className='links' to='/sign-up'>Sign-Up</Link>
-                    </div></>)    
-                    }
-            </Container>
-        )
-    }    
-}
+    
+    return (
+        <Container>
+            <ContainerLogo>
+                <FontAwesomeIcon icon={faCloud} className='cloud-icon' />
+                <h1>School in the Cloud</h1>
+            </ContainerLogo>
+                { }                    
+                {localStorage.getItem('user_role') === 'administrator' && (<div className='navLinks'>
+                    <Link className='links' to='/admin'>Admin</Link>
+                </div>)}
+                {localStorage.getItem('user_role') === 'volunteer' && (<div className='navLinks'>
+                    <Link className='links' to='/volunteer'>Volunteer</Link>
+                </div>)}
+                {localStorage.getItem('user_role') === 'student' && (<div className='navLinks'>
+                    <Link className='links' to='/student'>Student</Link>
+                </div>)}
+                {localStorage.getItem('token') ?
+                    (<SignOutButton onClick={handleClick}>Log Out</SignOutButton>) :
+                    (<><div className='navLinks'>
+                    <Link className='links' to='/'>Login</Link>
+                </div>
+                <div className='navLinks'>
+                    <Link  className='links' to='/sign-up'>Sign-Up</Link>
+                </div></>)    
+                }
+        </Container>
+    )
+}    
+
 
 const mapStateToProps = state => {
     return {
